@@ -1,0 +1,33 @@
+[project]
+name = "ai-fitness"
+version = "0.1.0"
+description = "AI-powered fitness and nutrition analysis tool"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "requests",
+    "python-dotenv",
+    "pandas",
+    "numpy",
+    "matplotlib",
+    "sentence-transformers",
+    "scikit-learn",
+    "huggingface-hub"
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "black",
+    "isort"
+]
+
+[build-system]
+requires = ["setuptools>=61.0.0", "wheel>=0.37.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.black]
+line-length = 88
+
+[tool.isort]
+profile = "black"
