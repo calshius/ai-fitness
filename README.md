@@ -170,13 +170,14 @@ docker ps
 To stop the database when you're done:
 ```bash
 docker-compose down
+```
 
 ### Running the Backend
 
 Start the FastAPI server:
 ```bash
 cd ai_fitness_backend
-uvicorn ai_fitness_backend.main:app --reload
+python run.py
 ```
 
 The API will be available at http://localhost:8000 with documentation at http://localhost:8000/docs
