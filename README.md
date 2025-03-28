@@ -19,6 +19,7 @@ The project includes a FastAPI backend for data processing and a SvelteKit front
 - **Personalized Analysis**: Get insights specific to your data and patterns
 - **Structured Recommendations**: Receive clear observations, dietary suggestions, and summaries
 - **Interactive Chat Interface**: Conversational UI for asking questions about your fitness data
+- **Multiple AI Models**: Choose from various language models with different capabilities and speeds
 - **File Upload**: Easy upload of fitness data files from MyFitnessPal and Garmin Connect
 
 ## Project Structure

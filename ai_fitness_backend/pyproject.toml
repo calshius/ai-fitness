@@ -21,6 +21,7 @@ dependencies = [
     "scikit-learn",
     "sqlalchemy",
     "psycopg2-binary",
+    "black>=24.8.0",
 ]
 
 [tool.setuptools]

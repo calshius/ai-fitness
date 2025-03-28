@@ -8,6 +8,8 @@
 
     let chatContainer;
     let messages = [];
+    let userScrolled = false;
+    let lastMessageCount = 0;
 
     // Subscribe to the chat store
     $: messages = $chatStore.messages;
@@ -16,18 +18,29 @@
     async function handleSubmit(event) {
         const query = event.detail;
         
+        // Add user message to chat first
+        chatStore.addMessage(query, true);
+        
+        // Reset userScrolled flag when user submits a new message
+        userScrolled = false;
+        
         // Set loading state
         chatStore.setLoading(true);
         
         try {
-            // Get response from API
-            const response = await queryFitnessData(query);
+            // Get response from API with selected model
+            const response = await queryFitnessData(query, $chatStore.selectedModel);
             
             // Add AI response to chat
             chatStore.addMessage(response, false);
         } catch (error) {
             console.error('Error querying fitness data:', error);
-            chatStore.addMessage('Sorry, there was an error processing your request. Please try again.', false);
+            
+            // Ensure we always add an error message to the chat
+            chatStore.addMessage(
+                "There seems to be an issue with the model you selected, please select a different model.", 
+                false
+            );
         } finally {
             chatStore.setLoading(false);
         }
@@ -36,21 +49,51 @@
     // Listen for suggested questions from sidebar
     onMount(() => {
         const handleAskQuestion = (event) => {
+            // Don't call chatStore.addMessage here - pass directly to handleSubmit
             handleSubmit({ detail: event.detail });
         };
         
         window.addEventListener('ask-question', handleAskQuestion);
         
+        // Add scroll event listener to detect user scrolling
+        if (chatContainer) {
+            chatContainer.addEventListener('scroll', handleScroll);
+        }
+        
         return () => {
             window.removeEventListener('ask-question', handleAskQuestion);
+            if (chatContainer) {
+                chatContainer.removeEventListener('scroll', handleScroll);
+            }
         };
     });
 
-    // Scroll to bottom when messages change
-    $: if (chatContainer && messages.length) {
+    // Handle scroll events
+    function handleScroll() {
+        if (!chatContainer) return;
+        
+        // Check if user has scrolled up
+        const { scrollTop, scrollHeight, clientHeight } = chatContainer;
+        const isAtBottom = scrollTop + clientHeight >= scrollHeight - 50; // Within 50px of bottom
+        
+        userScrolled = !isAtBottom;
+    }
+
+    // Scroll to bottom only when new messages arrive and user hasn't scrolled up
+    $: if (chatContainer && messages.length > lastMessageCount && !userScrolled) {
+        lastMessageCount = messages.length;
         setTimeout(() => {
             chatContainer.scrollTop = chatContainer.scrollHeight;
         }, 0);
+    }
+    
+    // Update lastMessageCount when messages change
+    $: if (messages) {
+        if (messages.length === 0) {
+            // Reset scroll state when chat is cleared
+            userScrolled = false;
+            lastMessageCount = 0;
+        }
     }
 </script>
 

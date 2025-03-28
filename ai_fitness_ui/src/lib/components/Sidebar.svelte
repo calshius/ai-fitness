@@ -10,8 +10,7 @@
         "What's the correlation between my workouts and weight?"
     ];
     
-    function askQuestion(question) {
-        chatStore.addMessage(question);
+    function askQuestion(question) {        
         // Dispatch a custom event that the parent component can listen for
         const event = new CustomEvent('ask-question', { detail: question });
         window.dispatchEvent(event);
