@@ -1,33 +1,30 @@
-[project]
-name = "ai-fitness"
-version = "0.1.0"
-description = "AI-powered fitness and nutrition analysis tool"
-readme = "README.md"
-requires-python = ">=3.10"
-dependencies = [
-    "requests",
-    "python-dotenv",
-    "pandas",
-    "numpy",
-    "matplotlib",
-    "sentence-transformers",
-    "scikit-learn",
-    "huggingface-hub"
-]
-
-[project.optional-dependencies]
-dev = [
-    "pytest",
-    "black",
-    "isort"
-]
-
 [build-system]
-requires = ["setuptools>=61.0.0", "wheel>=0.37.0"]
+requires = ["setuptools>=42", "wheel"]
 build-backend = "setuptools.build_meta"
 
-[tool.black]
-line-length = 88
+[project]
+name = "ai-fitness-backend"
+version = "0.1.0"
+description = "AI Fitness Backend"
+readme = "README.md"
+requires-python = ">=3.8"
+license = {text = "MIT"}
+dependencies = [
+    "fastapi",
+    "uvicorn",
+    "python-multipart",
+    "numpy",
+    "pandas",
+    "requests",
+    "python-dotenv",
+    "sentence-transformers",
+    "scikit-learn",
+    "sqlalchemy",
+    "psycopg2-binary",
+]
 
-[tool.isort]
-profile = "black"
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
