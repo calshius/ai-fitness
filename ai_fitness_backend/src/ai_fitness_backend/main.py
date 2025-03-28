@@ -59,8 +59,3 @@ async def root():
         "docs": "/docs",
         "endpoints": {"query": "/api/query", "upload": "/api/upload"},
     }
-
-
-if __name__ == "__main__":
-    logger.info("Starting uvicorn server")
-    uvicorn.run("ai_fitness_backend.main:app", host="0.0.0.0", port=8000, reload=True)
