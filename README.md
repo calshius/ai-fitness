@@ -1,5 +1,7 @@
 # AI Fitness Analyzer
 
+![AI Fitness Demo](./images/query-vid.gif)
+
 ## Overview
 
 AI Fitness Analyzer is a web application that uses artificial intelligence to analyze your fitness and nutrition data. It combines data from MyFitnessPal (MFP) and Garmin Connect to provide personalized insights and recommendations for improving your diet and exercise habits.
