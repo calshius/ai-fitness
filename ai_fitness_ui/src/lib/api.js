@@ -1,7 +1,7 @@
 // Update your API endpoint to point to the correct backend URL
 const API_BASE_URL = 'http://localhost:8000/api'; // Adjust this to your Python backend URL
 
-export async function queryFitnessData(query, model = "mistralai/Mistral-7B-Instruct-v0.2") {
+export async function queryFitnessData(query, model = "mistralai/Mistral-7B-Instruct-v0.2", includeRecipes = false) {
     try {
         const response = await fetch(`${API_BASE_URL}/query`, {
             method: 'POST',
@@ -12,7 +12,8 @@ export async function queryFitnessData(query, model = "mistralai/Mistral-7B-Inst
                 query,
                 system_role: "You are a helpful fitness and nutrition assistant.",
                 top_k: 7,
-                model: model
+                model: model,
+                include_recipes: includeRecipes
             }),
         });
 
@@ -22,7 +23,7 @@ export async function queryFitnessData(query, model = "mistralai/Mistral-7B-Inst
         }
 
         const data = await response.json();
-        return data.response;
+        return data; // Return the full response object, which may include recipes
     } catch (error) {
         console.error('Error querying fitness data:', error);
         throw error; // Make sure to re-throw the error so it can be caught in the component

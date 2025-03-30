@@ -22,6 +22,8 @@ dependencies = [
     "sqlalchemy",
     "psycopg2-binary",
     "black>=24.8.0",
+    "scrapy>=2.11.2",
+    "aiohttp>=3.10.11",
 ]
 
 [tool.setuptools]

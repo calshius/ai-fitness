@@ -7,6 +7,19 @@
     let query = '';
     let inputHeight = 56; // Default height
     let textarea;
+    let includeRecipes = false;
+
+    export function setQuery(newQuery) {
+        query = newQuery;
+        // Auto-resize the textarea after setting the query
+        setTimeout(() => {
+            if (textarea) {
+                autoResize();
+                // Focus the textarea
+                textarea.focus();
+            }
+        }, 0);
+    }
     
     // Model options
     const modelOptions = [
@@ -38,7 +51,8 @@
     
     function handleSubmit() {
         if (query.trim() && !$chatStore.isLoading) {
-            dispatch('submit', query);
+            // Pass both the query and includeRecipes flag
+            dispatch('submit', { query, includeRecipes });
             query = '';
             // Reset textarea height
             if (textarea) {
@@ -97,6 +111,18 @@
     ></textarea>
     
     <div class="right-controls">
+        <!-- Add recipe toggle checkbox -->
+        <div class="recipe-toggle">
+            <label class="toggle-label">
+                <input 
+                    type="checkbox" 
+                    bind:checked={includeRecipes} 
+                    disabled={$chatStore.isLoading}
+                />
+                <span class="toggle-text">Include recipes</span>
+            </label>
+        </div>
+        
         <div class="model-selector">
             <button 
                 class="model-button" 
@@ -223,6 +249,29 @@
         }
     }
     
+    /* Recipe toggle styles */
+    .recipe-toggle {
+        display: flex;
+        align-items: center;
+        margin-right: 0.5rem;
+    }
+    
+    .toggle-label {
+        display: flex;
+        align-items: center;
+        font-size: 0.875rem;
+        color: #4b5563;
+        cursor: pointer;
+    }
+    
+    .toggle-label input {
+        margin-right: 0.5rem;
+    }
+    
+    .toggle-text {
+        white-space: nowrap;
+    }
+    
     /* Model selector styles */
     .model-selector {
         position: relative;
@@ -295,5 +344,11 @@
     .model-option.selected {
         background-color: #eff6ff;
         color: #3b82f6;
+    }
+    
+    @media (max-width: 640px) {
+        .toggle-text {
+            display: none;
+        }
     }
 </style>

@@ -16,6 +16,12 @@
         window.dispatchEvent(event);
     }
     
+    function selectQuestion(question) {
+        // Dispatch a custom event to select the question without submitting it
+        const event = new CustomEvent('select-question', { detail: question });
+        window.dispatchEvent(event);
+    }
+    
     function clearChat() {
         if (confirm('Are you sure you want to clear the chat history?')) {
             chatStore.clear();
@@ -29,9 +35,16 @@
         <ul class="question-list">
             {#each suggestedQuestions as question}
                 <li>
-                    <button on:click={() => askQuestion(question)}>
-                        {question}
-                    </button>
+                    <div class="question-actions">
+                        <button class="question-button" on:click={() => askQuestion(question)}>
+                            {question}
+                        </button>
+                        <button class="select-button" on:click={() => selectQuestion(question)} title="Select without submitting">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
+                            </svg>
+                        </button>
+                    </div>
                 </li>
             {/each}
         </ul>
@@ -86,20 +99,40 @@
         gap: 0.5rem;
     }
 
-    .question-list button {
+    .question-actions {
+        display: flex;
+        align-items: center;
+        width: 100%;
+    }
+
+    .question-button {
         background: none;
         border: 1px solid #e5e7eb;
-        border-radius: 0.5rem;
+        border-radius: 0.5rem 0 0 0.5rem;
         padding: 0.75rem;
         text-align: left;
         font-size: 0.875rem;
         color: #374151;
         cursor: pointer;
         transition: all 0.2s;
-        width: 100%;
+        flex-grow: 1;
     }
 
-    .question-list button:hover {
+    .select-button {
+        background: none;
+        border: 1px solid #e5e7eb;
+        border-left: none;
+        border-radius: 0 0.5rem 0.5rem 0;
+        padding: 0.75rem 0.5rem;
+        color: #4b5563;
+        cursor: pointer;
+        transition: all 0.2s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .question-button:hover, .select-button:hover {
         background-color: #f3f4f6;
         border-color: #d1d5db;
     }

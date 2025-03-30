@@ -10,13 +10,14 @@
     let messages = [];
     let userScrolled = false;
     let lastMessageCount = 0;
+    let chatInputComponent;
 
     // Subscribe to the chat store
     $: messages = $chatStore.messages;
 
     // Handle new query submission
     async function handleSubmit(event) {
-        const query = event.detail;
+        const { query, includeRecipes } = event.detail;
         
         // Add user message to chat first
         chatStore.addMessage(query, true);
@@ -29,10 +30,15 @@
         
         try {
             // Get response from API with selected model
-            const response = await queryFitnessData(query, $chatStore.selectedModel);
+            const responseData = await queryFitnessData(query, $chatStore.selectedModel, includeRecipes);
             
-            // Add AI response to chat
-            chatStore.addMessage(response, false);
+            // Add AI response to chat with recipes if available
+            chatStore.addMessage(
+                responseData.response, 
+                false, 
+                includeRecipes, 
+                responseData.recipes
+            );
         } catch (error) {
             console.error('Error querying fitness data:', error);
             
@@ -48,12 +54,20 @@
 
     // Listen for suggested questions from sidebar
     onMount(() => {
+        // Keep the existing event listener for backward compatibility
         const handleAskQuestion = (event) => {
-            // Don't call chatStore.addMessage here - pass directly to handleSubmit
-            handleSubmit({ detail: event.detail });
+            handleSubmit({ detail: { query: event.detail, includeRecipes: false } });
+        };
+        
+        // Add a new event listener for selecting questions
+        const handleSelectQuestion = (event) => {
+            if (chatInputComponent) {
+                chatInputComponent.setQuery(event.detail);
+            }
         };
         
         window.addEventListener('ask-question', handleAskQuestion);
+        window.addEventListener('select-question', handleSelectQuestion);
         
         // Add scroll event listener to detect user scrolling
         if (chatContainer) {
@@ -62,6 +76,7 @@
         
         return () => {
             window.removeEventListener('ask-question', handleAskQuestion);
+            window.removeEventListener('select-question', handleSelectQuestion);
             if (chatContainer) {
                 chatContainer.removeEventListener('scroll', handleScroll);
             }
@@ -128,7 +143,7 @@
         </div>
         
         <div class="chat-input-container">
-            <ChatInput on:submit={handleSubmit} />
+            <ChatInput on:submit={handleSubmit} bind:this={chatInputComponent} />
         </div>
     </div>
 </div>

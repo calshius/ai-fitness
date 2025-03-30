@@ -1,6 +1,6 @@
 import logging
-from typing import List, Optional
-from pydantic import BaseModel, validator
+from typing import List, Optional, Dict, Any
+from pydantic import BaseModel, validator, Field
 
 # Set up logging
 logger = logging.getLogger("ai_fitness_api.models")
@@ -11,6 +11,8 @@ class QueryRequest(BaseModel):
     system_role: str = "You are a helpful fitness and nutrition assistant."
     top_k: int = 7
     model: str = "mistralai/Mistral-7B-Instruct-v0.2"
+    include_recipes: bool = Field(default=False, description="Whether to include food suggestions for recipes")
+
 
     @validator("query")
     def query_must_not_be_empty(cls, v):
@@ -36,6 +38,11 @@ class QueryResponse(BaseModel):
         super().__init__(**data)
         logger.debug(f"Created QueryResponse with length: {len(self.response)} chars")
 
+class EnhancedQueryResponse(QueryResponse):
+    recipes: Optional[Dict[str, Any]] = None
+    def __init__(self, **data):
+        super().__init__(**data)
+        logger.debug(f"Created EnhancedQueryResponse with length: {len(self.response)} chars")
 
 class UploadResponse(BaseModel):
     message: str

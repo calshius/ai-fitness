@@ -209,6 +209,7 @@ def analyze_fitness_data(
     system_role="You are a helpful fitness and nutrition assistant.",
     top_k=7,
     model="mistralai/Mistral-7B-Instruct-v0.2",
+    include_recipes=False
 ):
     """Analyze fitness data using RAG approach"""
     logger.info(
@@ -225,6 +226,16 @@ def analyze_fitness_data(
     logger.info(f"Context length: {len(context)} characters")
 
     # Create the full prompt with structured output instructions
+    recipe_instructions = ""
+    if include_recipes:
+        recipe_instructions = """
+        FOOD SUGGESTIONS:
+        - List 5-7 specific food items for breakfast
+        - List 5-7 specific food items for lunch
+        - List 5-7 specific food items for dinner
+        Format as comma-separated lists (e.g., "eggs, oatmeal, greek yogurt, banana, berries")
+        """
+    
     prompt = f"""
     {context}
     
@@ -243,6 +254,7 @@ def analyze_fitness_data(
     - Include macronutrient targets if relevant
     - Suggest meal timing and composition
     - List foods to include or avoid
+    {recipe_instructions}
     
     SUMMARY:
     A brief conclusion summarizing the key points and most important recommendations.

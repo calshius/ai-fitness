@@ -1,38 +1,39 @@
 import { writable } from 'svelte/store';
 
 function createChatStore() {
-    const { subscribe, update } = writable({
+    const { subscribe, set, update } = writable({
         messages: [],
         isLoading: false,
-        selectedModel: "mistralai/Mistral-7B-Instruct-v0.2"  // Default model
+        selectedModel: "mistralai/Mistral-7B-Instruct-v0.2"
     });
 
     return {
         subscribe,
-        addMessage: (message, isUser = true) => update(state => {
-            return {
-                ...state,
-                messages: [...state.messages, {
+        addMessage: (text, isUser, includeRecipes = false, recipes = null) => {
+            update(store => {
+                const newMessage = {
                     id: Date.now(),
-                    text: message,
+                    text,
                     isUser,
-                    timestamp: new Date()
-                }]
-            };
-        }),
-        setLoading: (loading) => update(state => {
-            return { ...state, isLoading: loading };
-        }),
-        setModel: (model) => update(state => {
-            return { ...state, selectedModel: model };
-        }),
-        clear: () => update(() => {
-            return { 
-                messages: [], 
-                isLoading: false,
-                selectedModel: "mistralai/Mistral-7B-Instruct-v0.2"  // Reset to default model
-            };
-        })
+                    timestamp: new Date(),
+                    includeRecipes,
+                    recipes
+                };
+                return {
+                    ...store,
+                    messages: [...store.messages, newMessage]
+                };
+            });
+        },
+        setLoading: (isLoading) => {
+            update(store => ({ ...store, isLoading }));
+        },
+        setModel: (model) => {
+            update(store => ({ ...store, selectedModel: model }));
+        },
+        clear: () => {
+            update(store => ({ ...store, messages: [] }));
+        }
     };
 }
 
