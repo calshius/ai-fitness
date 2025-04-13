@@ -1,8 +1,6 @@
 import logging
 import aiohttp
 import json
-import re
-from bs4 import BeautifulSoup
 from typing import List, Dict, Any
 from ..scrapers.base_scraper import BaseScraper
 
@@ -14,34 +12,28 @@ class MorrisonsScraper(BaseScraper):
 
     def __init__(self):
         super().__init__()
-        self.base_url = "https://groceries.morrisons.com/search"
+        self.api_url = "https://groceries.morrisons.com/api/v6/products/search"
 
     async def search_product(self, product_name: str) -> List[Dict[str, Any]]:
         """Search for a product in Morrisons"""
         logger.info(f"Searching for {product_name} in Morrisons")
 
-        params = {"q": product_name}
+        params = {"term": product_name}
 
         headers = {
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
-            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
-            "Accept-Language": "en-US,en;q=0.5",
+            "accept": "application/json; charset=utf-8",
+            "accept-language": "en-US,en;q=0.6",
         }
 
         try:
-            # Configure client session with appropriate settings
-            conn = aiohttp.TCPConnector(ssl=False)
-            timeout = aiohttp.ClientTimeout(total=30)
-
-            async with aiohttp.ClientSession(
-                connector=conn, timeout=timeout
-            ) as session:
+            async with aiohttp.ClientSession() as session:
                 async with session.get(
-                    self.base_url, params=params, headers=headers, allow_redirects=True
+                    self.api_url, params=params, headers=headers
                 ) as response:
                     if response.status == 200:
-                        html_content = await response.text()
-                        return self._extract_product_listing_data(html_content)
+                        data = await response.json()
+                        return self._parse_results(data)
                     else:
                         logger.error(f"Error searching Morrisons: {response.status}")
                         return []
@@ -49,114 +41,75 @@ class MorrisonsScraper(BaseScraper):
             logger.error(f"Error searching Morrisons: {str(e)}")
             return []
 
-    def _extract_product_listing_data(self, html_content: str) -> List[Dict[str, Any]]:
-        """Extract product data from the product-listing-structured-data script tag"""
+    def _parse_results(self, data: Dict[str, Any]) -> List[Dict[str, Any]]:
+        """Parse the results from the Morrisons API"""
         results = []
 
         try:
-            soup = BeautifulSoup(html_content, "html.parser")
+            # Extract products from the entities.product object
+            products = data.get("entities", {}).get("product", {})
 
-            # Find the script tag with product listing structured data
-            product_listing_script = soup.find(
-                "script", attrs={"data-test": "product-listing-structured-data"}
-            )
+            logger.info(f"Found {len(products)} products in Morrisons response")
 
-            if product_listing_script and product_listing_script.string:
+            for product_id, product in products.items():
                 try:
-                    # Parse the JSON data
-                    data = json.loads(product_listing_script.string)
+                    # Extract product details
+                    name = product.get("name", "")
 
-                    # Extract the item list elements
-                    items = data.get("itemListElement", [])
+                    # Extract price information
+                    price_info = product.get("price", {}).get("current", {})
+                    price = float(price_info.get("amount", 0.0)) if price_info else 0.0
 
-                    logger.info(f"Found {len(items)} products in structured data")
+                    # Extract unit price information
+                    unit_price_info = (
+                        product.get("price", {}).get("unit", {}).get("current", {})
+                    )
+                    unit_price = (
+                        unit_price_info.get("amount", "") if unit_price_info else ""
+                    )
+                    unit_label = (
+                        product.get("price", {}).get("unit", {}).get("label", "")
+                    )
 
-                    # Process each item
-                    for item in items:
-                        try:
-                            # Get the product URL
-                            url = item.get("url", "")
+                    # Format unit price with label
+                    formatted_unit_price = (
+                        f"{unit_price} {unit_label}"
+                        if unit_price and unit_label
+                        else ""
+                    )
 
-                            # Extract product details from the URL
-                            product_name = (
-                                url.split("/")[-2].replace("-", " ").title()
-                                if url
-                                else "Unknown Product"
-                            )
+                    # Extract retailer product ID
+                    retailer_id = product.get("retailerProductId", "")
 
-                            # Create a product entry with available information
-                            product_data = {
-                                "name": product_name,
-                                "price": 0.0,  # Price not available in this data
-                                "unit_price": "",  # Unit price not available in this data
-                                "url": url,
-                                "image_url": "",  # Image URL not available in this data
-                            }
+                    # Construct the product URL
+                    url = f"https://groceries.morrisons.com/products/{name.lower().replace(' ', '-')}/{retailer_id}"
 
-                            results.append(self._format_result(product_data))
-                        except Exception as e:
-                            logger.error(f"Error processing product item: {str(e)}")
-                            continue
-                except json.JSONDecodeError as e:
-                    logger.error(f"Error parsing JSON from script tag: {str(e)}")
-            else:
-                logger.warning(
-                    "Could not find product-listing-structured-data script tag"
-                )
+                    # Extract image URL
+                    image_info = product.get("image", {})
+                    image_url = image_info.get("src", "") if image_info else ""
 
-                # If we can't find the specific script tag, try to find any script with product data
-                all_scripts = soup.find_all("script")
-                for script in all_scripts:
-                    if script.string and '"itemListElement"' in script.string:
-                        try:
-                            # Try to extract JSON data
-                            match = re.search(
-                                r'({.*"itemListElement":\s*\[.*\].*})', script.string
-                            )
-                            if match:
-                                data = json.loads(match.group(1))
-                                items = data.get("itemListElement", [])
+                    # Extract size information
+                    size = product.get("size", {}).get("value", "")
 
-                                logger.info(
-                                    f"Found {len(items)} products in alternative script tag"
-                                )
+                    # Extract brand
+                    brand = product.get("brand", "")
 
-                                for item in items:
-                                    try:
-                                        url = item.get("url", "")
-                                        product_name = (
-                                            url.split("/")[-2].replace("-", " ").title()
-                                            if url
-                                            else "Unknown Product"
-                                        )
+                    product_data = {
+                        "name": name,
+                        "price": price,
+                        "unit_price": formatted_unit_price,
+                        "url": url,
+                        "image_url": image_url,
+                        "size": size,
+                        "brand": brand,
+                    }
 
-                                        product_data = {
-                                            "name": product_name,
-                                            "price": 0.0,
-                                            "unit_price": "",
-                                            "url": url,
-                                            "image_url": "",
-                                        }
-
-                                        results.append(
-                                            self._format_result(product_data)
-                                        )
-                                    except Exception as e:
-                                        logger.error(
-                                            f"Error processing product item: {str(e)}"
-                                        )
-                                        continue
-                        except Exception as e:
-                            logger.error(f"Error extracting JSON from script: {str(e)}")
-                            continue
-
-            # If we still have no results, try to fetch additional details for each product
-            if results:
-                logger.info(f"Successfully extracted {len(results)} products")
-            else:
-                logger.warning("Could not extract any products from the HTML")
+                    results.append(self._format_result(product_data))
+                except Exception as e:
+                    logger.error(f"Error parsing product: {str(e)}")
+                    continue
 
         except Exception as e:
-            logger.error(f"Error extracting product listing data: {str(e)}")
+            logger.error(f"Error parsing Morrisons results: {str(e)}")
 
         return results
