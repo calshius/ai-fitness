@@ -1,5 +1,4 @@
 import logging
-import json
 import aiohttp
 from typing import List, Dict, Any
 from ..scrapers.base_scraper import BaseScraper
@@ -12,14 +11,22 @@ class AldiScraper(BaseScraper):
 
     def __init__(self):
         super().__init__()
-        self.base_url = "https://www.aldi.co.uk/search"
-        self.api_url = "https://www.aldi.co.uk/api/product-search"
+        self.api_url = "https://api.aldi.co.uk/v3/product-search"
 
     async def search_product(self, product_name: str) -> List[Dict[str, Any]]:
         """Search for a product in Aldi"""
         logger.info(f"Searching for {product_name} in Aldi")
 
-        params = {"q": product_name, "page": 1, "count": 10}
+        params = {
+            "currency": "GBP",
+            "serviceType": "walk-in",
+            "q": product_name,
+            "limit": 30,
+            "offset": 0,
+            "sort": "relevance",
+            "testVariant": "A",
+            "servicePoint": "C092",  # This might need to be configurable
+        }
 
         headers = {
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
@@ -46,24 +53,62 @@ class AldiScraper(BaseScraper):
         results = []
 
         try:
-            products = data.get("results", [])
+            products = data.get("data", [])
+
+            logger.info(f"Found {len(products)} products in Aldi response")
 
             for product in products:
-                # Extract price information
-                price = product.get("price", {}).get("value", 0.0)
+                try:
+                    # Extract product details
+                    name = product.get("name", "")
+                    brand = product.get("brandName", "")
 
-                # Extract unit price information
-                unit_price = product.get("pricePerUnit", {}).get("value", 0.0)
+                    # Extract price information
+                    price_info = product.get("price", {})
+                    price_amount = price_info.get("amount", 0)
+                    # Convert from pence to pounds
+                    price = (
+                        float(price_amount) / 100 if price_amount is not None else 0.0
+                    )
 
-                product_data = {
-                    "name": product.get("name", ""),
-                    "price": price,
-                    "unit_price": unit_price,
-                    "url": f"https://www.aldi.co.uk{product.get('url', '')}",
-                    "image_url": product.get("image", ""),
-                }
+                    # Extract unit price information
+                    comparison_price = price_info.get("comparison", 0)
+                    comparison_display = price_info.get("comparisonDisplay", "")
+                    unit_price = comparison_display if comparison_display else ""
 
-                results.append(self._format_result(product_data))
+                    # Construct the product URL
+                    url_slug = product.get("urlSlugText", "")
+                    url = f"https://www.aldi.co.uk/p/{url_slug}" if url_slug else ""
+
+                    # Extract image URL
+                    image_url = ""
+                    assets = product.get("assets", [])
+                    if assets and len(assets) > 0:
+                        asset = assets[0]
+                        # Replace {width} and {slug} in the URL template
+                        image_url = asset.get("url", "")
+                        if image_url:
+                            image_url = image_url.replace("{width}", "800").replace(
+                                "{slug}", url_slug
+                            )
+
+                    # Extract size information
+                    size = product.get("sellingSize", "")
+
+                    product_data = {
+                        "name": name,
+                        "price": price,
+                        "unit_price": unit_price,
+                        "url": url,
+                        "image_url": image_url,
+                        "size": size,
+                        "brand": brand,
+                    }
+
+                    results.append(self._format_result(product_data))
+                except Exception as e:
+                    logger.error(f"Error parsing Aldi product: {str(e)}")
+                    continue
 
         except Exception as e:
             logger.error(f"Error parsing Aldi results: {str(e)}")

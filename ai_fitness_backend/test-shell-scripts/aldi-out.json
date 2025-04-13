@@ -1,0 +1,2099 @@
+{
+  "meta": {
+    "spellingSuggestion": null,
+    "pinned": [],
+    "keywordRedirect": null,
+    "pagination": {
+      "offset": 0,
+      "limit": 30,
+      "totalCount": 212
+    },
+    "debug": null,
+    "facets": [
+      {
+        "name": "category-tree",
+        "localizedName": "Category",
+        "docCount": 212,
+        "activeValue": [],
+        "config": {
+          "parameterName": "categoryTree",
+          "type": "value",
+          "isMultiValue": true,
+          "componentName": "category-tree",
+          "component": {
+            "name": "categoryTree",
+            "valueActive": null,
+            "valueInactive": null
+          }
+        },
+        "stats": null,
+        "values": [
+          {
+            "key": "1588161421695554",
+            "docCount": 9,
+            "label": "Easter",
+            "isSelected": false,
+            "thumbnail": null,
+            "children": [
+              {
+                "key": "1588161421695555",
+                "docCount": 2,
+                "label": "Easter Mains",
+                "isSelected": false,
+                "thumbnail": null,
+                "children": []
+              },
+              {
+                "key": "1588161421695556",
+                "docCount": 2,
+                "label": "Easter Sides",
+                "isSelected": false,
+                "thumbnail": null,
+                "children": []
+              }
+            ]
+          },
+          {
+            "key": "1588161416978050",
+            "docCount": 2,
+            "label": "Fresh Food",
+            "isSelected": false,
+            "thumbnail": null,
+            "children": [
+              {
+                "key": "1588161416978050001",
+                "docCount": 1,
+                "label": "Fruit",
+                "isSelected": false,
+                "thumbnail": null,
+                "children": []
+              },
+              {
+                "key": "1588161416978050004",
+                "docCount": 1,
+                "label": "Poultry",
+                "isSelected": false,
+                "thumbnail": null,
+                "children": []
+              }
+            ]
+          },
+          {
+            "key": "1588161416978053",
+            "docCount": 17,
+            "label": "Food Cupboard",
+            "isSelected": false,
+            "thumbnail": null,
+            "children": [
+              {
+                "key": "1588161416978053001",
+                "docCount": 5,
+                "label": "Biscuits & Crackers",
+                "isSelected": false,
+                "thumbnail": null,
+                "children": []
+              },
+              {
+                "key": "1588161416978053004",
+                "docCount": 7,
+                "label": "Crisps & Snacks",
+                "isSelected": false,
+                "thumbnail": null,
+                "children": []
+              },
+              {
+                "key": "1588161416978053008",
+                "docCount": 2,
+                "label": "Rice, Pasta & Noodles",
+                "isSelected": false,
+                "thumbnail": null,
+                "children": []
+              },
+              {
+                "key": "1588161416978053010",
+                "docCount": 2,
+                "label": "Sauces, Oils & Dressings",
+                "isSelected": false,
+                "thumbnail": null,
+                "children": []
+              },
+              {
+                "key": "1588161416978053012",
+                "docCount": 1,
+                "label": "Tins, Cans & Packets",
+                "isSelected": false,
+                "thumbnail": null,
+                "children": []
+              }
+            ]
+          },
+          {
+            "key": "1588161416978051",
+            "docCount": 152,
+            "label": "Chilled Food",
+            "isSelected": false,
+            "thumbnail": null,
+            "children": [
+              {
+                "key": "1588161416978051004",
+                "docCount": 105,
+                "label": "Cheese",
+                "isSelected": false,
+                "thumbnail": null,
+                "children": []
+              },
+              {
+                "key": "1588161416978051007",
+                "docCount": 3,
+                "label": "Ready Meals",
+                "isSelected": false,
+                "thumbnail": null,
+                "children": []
+              },
+              {
+                "key": "1588161416978051008",
+                "docCount": 5,
+                "label": "Pizza, Pasta & Garlic Bread",
+                "isSelected": false,
+                "thumbnail": null,
+                "children": []
+              },
+              {
+                "key": "1588161416978051009",
+                "docCount": 3,
+                "label": "Sides & Starters",
+                "isSelected": false,
+                "thumbnail": null,
+                "children": []
+              },
+              {
+                "key": "1588161416978051011",
+                "docCount": 1,
+                "label": "Chilled Meats",
+                "isSelected": false,
+                "thumbnail": null,
+                "children": []
+              },
+              {
+                "key": "1588161416978051012",
+                "docCount": 25,
+                "label": "Party Food, Pies & Salads",
+                "isSelected": false,
+                "thumbnail": null,
+                "children": []
+              },
+              {
+                "key": "1588161416978051013",
+                "docCount": 11,
+                "label": "Food To Go",
+                "isSelected": false,
+                "thumbnail": null,
+                "children": []
+              }
+            ]
+          },
+          {
+            "key": "1588161416978056",
+            "docCount": 28,
+            "label": "Frozen Food",
+            "isSelected": false,
+            "thumbnail": null,
+            "children": [
+              {
+                "key": "1588161416978056001",
+                "docCount": 6,
+                "label": "Meat & Poultry",
+                "isSelected": false,
+                "thumbnail": null,
+                "children": []
+              },
+              {
+                "key": "1588161416978056002",
+                "docCount": 1,
+                "label": "Fish & Seafood",
+                "isSelected": false,
+                "thumbnail": null,
+                "children": []
+              },
+              {
+                "key": "1588161416978056004",
+                "docCount": 2,
+                "label": "Vegetables & Sides",
+                "isSelected": false,
+                "thumbnail": null,
+                "children": []
+              },
+              {
+                "key": "1588161416978056005",
+                "docCount": 3,
+                "label": "Ready Meals",
+                "isSelected": false,
+                "thumbnail": null,
+                "children": []
+              },
+              {
+                "key": "1588161416978056006",
+                "docCount": 9,
+                "label": "Pizzas & Garlic Bread",
+                "isSelected": false,
+                "thumbnail": null,
+                "children": []
+              },
+              {
+                "key": "1588161416978056007",
+                "docCount": 6,
+                "label": "Party Food, Snacks & Pies",
+                "isSelected": false,
+                "thumbnail": null,
+                "children": []
+              },
+              {
+                "key": "1588161421695435",
+                "docCount": 1,
+                "label": "Frozen Vegetarian Food",
+                "isSelected": false,
+                "thumbnail": null,
+                "children": []
+              }
+            ]
+          },
+          {
+            "key": "1588161416978049",
+            "docCount": 2,
+            "label": "Bakery",
+            "isSelected": false,
+            "thumbnail": null,
+            "children": [
+              {
+                "key": "1588161416978049001",
+                "docCount": 1,
+                "label": "Bread",
+                "isSelected": false,
+                "thumbnail": null,
+                "children": []
+              },
+              {
+                "key": "1588161416978049002",
+                "docCount": 1,
+                "label": "Bread Rolls",
+                "isSelected": false,
+                "thumbnail": null,
+                "children": []
+              }
+            ]
+          },
+          {
+            "key": "1588161416978057",
+            "docCount": 6,
+            "label": "Baby & Toddler",
+            "isSelected": false,
+            "thumbnail": null,
+            "children": [
+              {
+                "key": "1588161416978057001",
+                "docCount": 5,
+                "label": "Baby Food Pouches & Pots",
+                "isSelected": false,
+                "thumbnail": null,
+                "children": []
+              },
+              {
+                "key": "1588161416978057002",
+                "docCount": 1,
+                "label": "Baby Snacks & Finger Food",
+                "isSelected": false,
+                "thumbnail": null,
+                "children": []
+              }
+            ]
+          },
+          {
+            "key": "1588161416978060",
+            "docCount": 1,
+            "label": "Pet Care",
+            "isSelected": false,
+            "thumbnail": null,
+            "children": [
+              {
+                "key": "1588161416978060001",
+                "docCount": 1,
+                "label": "Cat Food",
+                "isSelected": false,
+                "thumbnail": null,
+                "children": []
+              }
+            ]
+          },
+          {
+            "key": "1588161421881163",
+            "docCount": 5,
+            "label": "Vegetarian & Plant Based",
+            "isSelected": false,
+            "thumbnail": null,
+            "children": [
+              {
+                "key": "1588161421881163003",
+                "docCount": 1,
+                "label": "Frozen Vegetarian",
+                "isSelected": false,
+                "thumbnail": null,
+                "children": []
+              },
+              {
+                "key": "1588161421881163004",
+                "docCount": 4,
+                "label": "Chilled Vegan",
+                "isSelected": false,
+                "thumbnail": null,
+                "children": []
+              }
+            ]
+          },
+          {
+            "key": "1588161422445158",
+            "docCount": 3,
+            "label": "Summer Range",
+            "isSelected": false,
+            "thumbnail": null,
+            "children": [
+              {
+                "key": "1588161422445159",
+                "docCount": 2,
+                "label": "Picnic",
+                "isSelected": false,
+                "thumbnail": null,
+                "children": []
+              },
+              {
+                "key": "1588161422445160",
+                "docCount": 1,
+                "label": "BBQ",
+                "isSelected": false,
+                "thumbnail": null,
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "theme",
+        "localizedName": "Theme",
+        "docCount": 212,
+        "activeValue": [],
+        "config": {
+          "parameterName": "theme",
+          "type": "value",
+          "isMultiValue": true,
+          "componentName": "multi-select",
+          "component": {
+            "name": "multiSelect",
+            "valueActive": null,
+            "valueInactive": null
+          }
+        },
+        "stats": null,
+        "values": [
+          {
+            "key": "Food for the Pantry",
+            "docCount": 1,
+            "label": "Food for the Pantry",
+            "isSelected": null,
+            "thumbnail": null,
+            "children": []
+          },
+          {
+            "key": "Fresh Meat Specials",
+            "docCount": 1,
+            "label": "Fresh Meat Specials",
+            "isSelected": null,
+            "thumbnail": null,
+            "children": []
+          }
+        ]
+      },
+      {
+        "name": "brand-name",
+        "localizedName": "Brand",
+        "docCount": 212,
+        "activeValue": [],
+        "config": {
+          "parameterName": "brandName",
+          "type": "value",
+          "isMultiValue": true,
+          "componentName": "multi-select",
+          "component": {
+            "name": "multiSelect",
+            "valueActive": null,
+            "valueInactive": null
+          }
+        },
+        "stats": null,
+        "values": [
+          {
+            "key": "EMPORIUM",
+            "docCount": 59,
+            "label": "EMPORIUM",
+            "isSelected": null,
+            "thumbnail": null,
+            "children": []
+          },
+          {
+            "key": "SPECIALLY SELECTED",
+            "docCount": 38,
+            "label": "SPECIALLY SELECTED",
+            "isSelected": null,
+            "thumbnail": null,
+            "children": []
+          },
+          {
+            "key": "CRESTWOOD",
+            "docCount": 17,
+            "label": "CRESTWOOD",
+            "isSelected": null,
+            "thumbnail": null,
+            "children": []
+          },
+          {
+            "key": "EVERYDAY ESSENTIALS",
+            "docCount": 11,
+            "label": "EVERYDAY ESSENTIALS",
+            "isSelected": null,
+            "thumbnail": null,
+            "children": []
+          },
+          {
+            "key": "CARLOS",
+            "docCount": 10,
+            "label": "CARLOS",
+            "isSelected": null,
+            "thumbnail": null,
+            "children": []
+          },
+          {
+            "key": "HEAT TO EAT",
+            "docCount": 7,
+            "label": "HEAT TO EAT",
+            "isSelected": null,
+            "thumbnail": null,
+            "children": []
+          },
+          {
+            "key": "THE DELI",
+            "docCount": 7,
+            "label": "THE DELI",
+            "isSelected": null,
+            "thumbnail": null,
+            "children": []
+          },
+          {
+            "key": "MAMIA",
+            "docCount": 6,
+            "label": "MAMIA",
+            "isSelected": null,
+            "thumbnail": null,
+            "children": []
+          },
+          {
+            "key": "CUCINA",
+            "docCount": 5,
+            "label": "CUCINA",
+            "isSelected": null,
+            "thumbnail": null,
+            "children": []
+          },
+          {
+            "key": "EAT & GO",
+            "docCount": 5,
+            "label": "EAT & GO",
+            "isSelected": null,
+            "thumbnail": null,
+            "children": []
+          },
+          {
+            "key": "SNACKRITE",
+            "docCount": 5,
+            "label": "SNACKRITE",
+            "isSelected": null,
+            "thumbnail": null,
+            "children": []
+          },
+          {
+            "key": "PLANT MENU",
+            "docCount": 4,
+            "label": "PLANT MENU",
+            "isSelected": null,
+            "thumbnail": null,
+            "children": []
+          },
+          {
+            "key": "SAVOUR BAKES",
+            "docCount": 4,
+            "label": "SAVOUR BAKES",
+            "isSelected": null,
+            "thumbnail": null,
+            "children": []
+          },
+          {
+            "key": "INSPIRED CUISINE",
+            "docCount": 3,
+            "label": "INSPIRED CUISINE",
+            "isSelected": null,
+            "thumbnail": null,
+            "children": []
+          },
+          {
+            "key": "LET'S PARTY",
+            "docCount": 3,
+            "label": "LET'S PARTY",
+            "isSelected": null,
+            "thumbnail": null,
+            "children": []
+          },
+          {
+            "key": "SERIOUSLY",
+            "docCount": 3,
+            "label": "SERIOUSLY",
+            "isSelected": null,
+            "thumbnail": null,
+            "children": []
+          },
+          {
+            "key": "VEGGIE MENU",
+            "docCount": 3,
+            "label": "VEGGIE MENU",
+            "isSelected": null,
+            "thumbnail": null,
+            "children": []
+          },
+          {
+            "key": "BABYBEL",
+            "docCount": 2,
+            "label": "BABYBEL",
+            "isSelected": null,
+            "thumbnail": null,
+            "children": []
+          },
+          {
+            "key": "BRAMWELLS",
+            "docCount": 2,
+            "label": "BRAMWELLS",
+            "isSelected": null,
+            "thumbnail": null,
+            "children": []
+          },
+          {
+            "key": "CATHEDRAL CITY",
+            "docCount": 2,
+            "label": "CATHEDRAL CITY",
+            "isSelected": null,
+            "thumbnail": null,
+            "children": []
+          },
+          {
+            "key": "OAKHURST",
+            "docCount": 2,
+            "label": "OAKHURST",
+            "isSelected": null,
+            "thumbnail": null,
+            "children": []
+          },
+          {
+            "key": "ROOSTERS",
+            "docCount": 2,
+            "label": "ROOSTERS",
+            "isSelected": null,
+            "thumbnail": null,
+            "children": []
+          },
+          {
+            "key": "SPECIALLY SELECTED GASTRO",
+            "docCount": 2,
+            "label": "SPECIALLY SELECTED GASTRO",
+            "isSelected": null,
+            "thumbnail": null,
+            "children": []
+          },
+          {
+            "key": "ASHFIELDS",
+            "docCount": 1,
+            "label": "ASHFIELDS",
+            "isSelected": null,
+            "thumbnail": null,
+            "children": []
+          },
+          {
+            "key": "CHICAGO TOWN",
+            "docCount": 1,
+            "label": "CHICAGO TOWN",
+            "isSelected": null,
+            "thumbnail": null,
+            "children": []
+          },
+          {
+            "key": "FOUR SEASONS",
+            "docCount": 1,
+            "label": "FOUR SEASONS",
+            "isSelected": null,
+            "thumbnail": null,
+            "children": []
+          },
+          {
+            "key": "NATURE'S PICK",
+            "docCount": 1,
+            "label": "NATURE'S PICK",
+            "isSelected": null,
+            "thumbnail": null,
+            "children": []
+          },
+          {
+            "key": "SEABROOK",
+            "docCount": 1,
+            "label": "SEABROOK",
+            "isSelected": null,
+            "thumbnail": null,
+            "children": []
+          },
+          {
+            "key": "STRINGS AND THINGS",
+            "docCount": 1,
+            "label": "STRINGS AND THINGS",
+            "isSelected": null,
+            "thumbnail": null,
+            "children": []
+          },
+          {
+            "key": "THE CHEESE EMPORIUM",
+            "docCount": 1,
+            "label": "THE CHEESE EMPORIUM",
+            "isSelected": null,
+            "thumbnail": null,
+            "children": []
+          },
+          {
+            "key": "VILLAGE BAKERY",
+            "docCount": 1,
+            "label": "VILLAGE BAKERY",
+            "isSelected": null,
+            "thumbnail": null,
+            "children": []
+          },
+          {
+            "key": "VITACAT",
+            "docCount": 1,
+            "label": "VITACAT",
+            "isSelected": null,
+            "thumbnail": null,
+            "children": []
+          },
+          {
+            "key": "WORLDWIDE FOODS",
+            "docCount": 1,
+            "label": "WORLDWIDE FOODS",
+            "isSelected": null,
+            "thumbnail": null,
+            "children": []
+          }
+        ]
+      }
+    ],
+    "sort": [
+      {
+        "parameterName": "sort",
+        "parameterValue": "relevance",
+        "localizedName": "Relevance",
+        "isActive": true
+      },
+      {
+        "parameterName": "sort",
+        "parameterValue": "name_asc",
+        "localizedName": "Name (A to Z)",
+        "isActive": false
+      },
+      {
+        "parameterName": "sort",
+        "parameterValue": "name_desc",
+        "localizedName": "Name (Z to A)",
+        "isActive": false
+      },
+      {
+        "parameterName": "sort",
+        "parameterValue": "price_asc",
+        "localizedName": "Price (Low to High)",
+        "isActive": false
+      },
+      {
+        "parameterName": "sort",
+        "parameterValue": "price_desc",
+        "localizedName": "Price (High to Low)",
+        "isActive": false
+      }
+    ]
+  },
+  "data": [
+    {
+      "sku": "000000000000494377",
+      "name": "Cheese Singles",
+      "brandName": "EVERYDAY ESSENTIALS",
+      "urlSlugText": "everyday-essentials-cheese-singles",
+      "ageRestriction": null,
+      "alcohol": null,
+      "discontinued": false,
+      "discontinuedNote": null,
+      "notForSale": true,
+      "notForSaleReason": null,
+      "quantityMin": 1,
+      "quantityMax": 99,
+      "quantityInterval": 1,
+      "quantityDefault": 1,
+      "quantityUnit": "ea",
+      "weightType": "0",
+      "sellingSize": "0.225 KG",
+      "onSaleDateDisplay": null,
+      "price": {
+        "amount": 83,
+        "amountRelevant": 83,
+        "amountRelevantDisplay": "£0.83",
+        "bottleDeposit": 0,
+        "bottleDepositDisplay": "£0.00",
+        "comparison": 369,
+        "comparisonDisplay": "£3.69/1KG",
+        "currencyCode": "GBP",
+        "currencySymbol": "£",
+        "perUnit": null,
+        "perUnitDisplay": null,
+        "wasPriceDisplay": null,
+        "additionalInfo": null
+      },
+      "countryExtensions": null,
+      "assets": [
+        {
+          "url": "https://dm.emea.cms.aldi.cx/is/image/aldiprodeu/product/jpg/scaleWidth/{width}/15affb36-e473-4622-8043-bac4fe0f277d/{slug}",
+          "maxWidth": 1500,
+          "maxHeight": 1500,
+          "mimeType": "image/*",
+          "assetType": "FR01"
+        }
+      ]
+    },
+    {
+      "sku": "000000000282692001",
+      "name": "Gruyere Cheese",
+      "brandName": "SPECIALLY SELECTED",
+      "urlSlugText": "specially-selected-gruyere-cheese",
+      "ageRestriction": null,
+      "alcohol": null,
+      "discontinued": false,
+      "discontinuedNote": null,
+      "notForSale": true,
+      "notForSaleReason": null,
+      "quantityMin": 1,
+      "quantityMax": 99,
+      "quantityInterval": 1,
+      "quantityDefault": 1,
+      "quantityUnit": "ea",
+      "weightType": "0",
+      "sellingSize": "0.17 KG",
+      "onSaleDateDisplay": null,
+      "price": {
+        "amount": 319,
+        "amountRelevant": 319,
+        "amountRelevantDisplay": "£3.19",
+        "bottleDeposit": 0,
+        "bottleDepositDisplay": "£0.00",
+        "comparison": 1876,
+        "comparisonDisplay": "£18.76/1KG",
+        "currencyCode": "GBP",
+        "currencySymbol": "£",
+        "perUnit": null,
+        "perUnitDisplay": null,
+        "wasPriceDisplay": null,
+        "additionalInfo": null
+      },
+      "countryExtensions": null,
+      "assets": [
+        {
+          "url": "https://dm.emea.cms.aldi.cx/is/image/aldiprodeu/product/jpg/scaleWidth/{width}/6d945518-1595-41e2-8bc0-4426915861fa/{slug}",
+          "maxWidth": 1500,
+          "maxHeight": 1500,
+          "mimeType": "image/*",
+          "assetType": "FR01"
+        }
+      ]
+    },
+    {
+      "sku": "000000000282692002",
+      "name": "Manchego Cheese",
+      "brandName": "SPECIALLY SELECTED",
+      "urlSlugText": "specially-selected-manchego-cheese",
+      "ageRestriction": null,
+      "alcohol": null,
+      "discontinued": false,
+      "discontinuedNote": null,
+      "notForSale": true,
+      "notForSaleReason": null,
+      "quantityMin": 1,
+      "quantityMax": 99,
+      "quantityInterval": 1,
+      "quantityDefault": 1,
+      "quantityUnit": "ea",
+      "weightType": "0",
+      "sellingSize": "0.175 KG",
+      "onSaleDateDisplay": null,
+      "price": {
+        "amount": 319,
+        "amountRelevant": 319,
+        "amountRelevantDisplay": "£3.19",
+        "bottleDeposit": 0,
+        "bottleDepositDisplay": "£0.00",
+        "comparison": 1823,
+        "comparisonDisplay": "£18.23/1KG",
+        "currencyCode": "GBP",
+        "currencySymbol": "£",
+        "perUnit": null,
+        "perUnitDisplay": null,
+        "wasPriceDisplay": null,
+        "additionalInfo": null
+      },
+      "countryExtensions": null,
+      "assets": [
+        {
+          "url": "https://dm.emea.cms.aldi.cx/is/image/aldiprodeu/product/jpg/scaleWidth/{width}/b066d5b3-9151-4b72-982a-e04f8542062c/{slug}",
+          "maxWidth": 1500,
+          "maxHeight": 1500,
+          "mimeType": "image/*",
+          "assetType": "FR01"
+        }
+      ]
+    },
+    {
+      "sku": "000000000282692003",
+      "name": "Gouda Cheese",
+      "brandName": "SPECIALLY SELECTED",
+      "urlSlugText": "specially-selected-gouda-cheese",
+      "ageRestriction": null,
+      "alcohol": null,
+      "discontinued": false,
+      "discontinuedNote": null,
+      "notForSale": true,
+      "notForSaleReason": null,
+      "quantityMin": 1,
+      "quantityMax": 99,
+      "quantityInterval": 1,
+      "quantityDefault": 1,
+      "quantityUnit": "ea",
+      "weightType": "0",
+      "sellingSize": "0.18 KG",
+      "onSaleDateDisplay": null,
+      "price": {
+        "amount": 319,
+        "amountRelevant": 319,
+        "amountRelevantDisplay": "£3.19",
+        "bottleDeposit": 0,
+        "bottleDepositDisplay": "£0.00",
+        "comparison": 1772,
+        "comparisonDisplay": "£17.72/1KG",
+        "currencyCode": "GBP",
+        "currencySymbol": "£",
+        "perUnit": null,
+        "perUnitDisplay": null,
+        "wasPriceDisplay": null,
+        "additionalInfo": null
+      },
+      "countryExtensions": null,
+      "assets": [
+        {
+          "url": "https://dm.emea.cms.aldi.cx/is/image/aldiprodeu/product/jpg/scaleWidth/{width}/c977f535-c058-45f1-b3f9-6d13d8514c2b/{slug}",
+          "maxWidth": 1500,
+          "maxHeight": 1500,
+          "mimeType": "image/*",
+          "assetType": "FR01"
+        }
+      ]
+    },
+    {
+      "sku": "000000000282692004",
+      "name": "Comte Cheese",
+      "brandName": "SPECIALLY SELECTED",
+      "urlSlugText": "specially-selected-comte-cheese",
+      "ageRestriction": null,
+      "alcohol": null,
+      "discontinued": false,
+      "discontinuedNote": null,
+      "notForSale": true,
+      "notForSaleReason": null,
+      "quantityMin": 1,
+      "quantityMax": 99,
+      "quantityInterval": 1,
+      "quantityDefault": 1,
+      "quantityUnit": "ea",
+      "weightType": "0",
+      "sellingSize": "0.18 KG",
+      "onSaleDateDisplay": null,
+      "price": {
+        "amount": 319,
+        "amountRelevant": 319,
+        "amountRelevantDisplay": "£3.19",
+        "bottleDeposit": 0,
+        "bottleDepositDisplay": "£0.00",
+        "comparison": 1772,
+        "comparisonDisplay": "£17.72/1KG",
+        "currencyCode": "GBP",
+        "currencySymbol": "£",
+        "perUnit": null,
+        "perUnitDisplay": null,
+        "wasPriceDisplay": null,
+        "additionalInfo": null
+      },
+      "countryExtensions": null,
+      "assets": [
+        {
+          "url": "https://dm.emea.cms.aldi.cx/is/image/aldiprodeu/product/jpg/scaleWidth/{width}/d480b0d2-bb84-45bb-b10b-730d00737233/{slug}",
+          "maxWidth": 1500,
+          "maxHeight": 1500,
+          "mimeType": "image/*",
+          "assetType": "FR01"
+        }
+      ]
+    },
+    {
+      "sku": "000000000417200002",
+      "name": "Wensleydale Cheese",
+      "brandName": "EMPORIUM",
+      "urlSlugText": "emporium-wensleydale-cheese",
+      "ageRestriction": null,
+      "alcohol": null,
+      "discontinued": false,
+      "discontinuedNote": null,
+      "notForSale": true,
+      "notForSaleReason": null,
+      "quantityMin": 1,
+      "quantityMax": 99,
+      "quantityInterval": 1,
+      "quantityDefault": 1,
+      "quantityUnit": "ea",
+      "weightType": "0",
+      "sellingSize": "0.25 KG",
+      "onSaleDateDisplay": null,
+      "price": {
+        "amount": 185,
+        "amountRelevant": 185,
+        "amountRelevantDisplay": "£1.85",
+        "bottleDeposit": 0,
+        "bottleDepositDisplay": "£0.00",
+        "comparison": 740,
+        "comparisonDisplay": "£7.40/1KG",
+        "currencyCode": "GBP",
+        "currencySymbol": "£",
+        "perUnit": null,
+        "perUnitDisplay": null,
+        "wasPriceDisplay": null,
+        "additionalInfo": null
+      },
+      "countryExtensions": null,
+      "assets": [
+        {
+          "url": "https://dm.emea.cms.aldi.cx/is/image/aldiprodeu/product/jpg/scaleWidth/{width}/5a0f9378-1fa5-4f15-8d04-9d548011be2d/{slug}",
+          "maxWidth": 1500,
+          "maxHeight": 1500,
+          "mimeType": "image/*",
+          "assetType": "FR01"
+        }
+      ]
+    },
+    {
+      "sku": "000000000000416217",
+      "name": "Cottage Cheese",
+      "brandName": "EVERYDAY ESSENTIALS",
+      "urlSlugText": "everyday-essentials-cottage-cheese",
+      "ageRestriction": null,
+      "alcohol": null,
+      "discontinued": false,
+      "discontinuedNote": null,
+      "notForSale": true,
+      "notForSaleReason": null,
+      "quantityMin": 1,
+      "quantityMax": 99,
+      "quantityInterval": 1,
+      "quantityDefault": 1,
+      "quantityUnit": "ea",
+      "weightType": "0",
+      "sellingSize": "0.3 KG",
+      "onSaleDateDisplay": null,
+      "price": {
+        "amount": 79,
+        "amountRelevant": 79,
+        "amountRelevantDisplay": "£0.79",
+        "bottleDeposit": 0,
+        "bottleDepositDisplay": "£0.00",
+        "comparison": 263,
+        "comparisonDisplay": "£2.63/1KG",
+        "currencyCode": "GBP",
+        "currencySymbol": "£",
+        "perUnit": null,
+        "perUnitDisplay": null,
+        "wasPriceDisplay": null,
+        "additionalInfo": null
+      },
+      "countryExtensions": null,
+      "assets": [
+        {
+          "url": "https://dm.emea.cms.aldi.cx/is/image/aldiprodeu/product/jpg/scaleWidth/{width}/7d68d27d-a19b-45b1-be0a-415b05426de0/{slug}",
+          "maxWidth": 1500,
+          "maxHeight": 1500,
+          "mimeType": "image/*",
+          "assetType": "FR02"
+        }
+      ]
+    },
+    {
+      "sku": "000000000482344002",
+      "name": "Mature Cheese",
+      "brandName": "CATHEDRAL CITY",
+      "urlSlugText": "cathedral-city-mature-cheese",
+      "ageRestriction": null,
+      "alcohol": null,
+      "discontinued": false,
+      "discontinuedNote": null,
+      "notForSale": true,
+      "notForSaleReason": null,
+      "quantityMin": 1,
+      "quantityMax": 99,
+      "quantityInterval": 1,
+      "quantityDefault": 1,
+      "quantityUnit": "ea",
+      "weightType": "0",
+      "sellingSize": "0.35 KG",
+      "onSaleDateDisplay": null,
+      "price": {
+        "amount": 325,
+        "amountRelevant": 325,
+        "amountRelevantDisplay": "£3.25",
+        "bottleDeposit": 0,
+        "bottleDepositDisplay": "£0.00",
+        "comparison": 929,
+        "comparisonDisplay": "£9.29/1KG",
+        "currencyCode": "GBP",
+        "currencySymbol": "£",
+        "perUnit": null,
+        "perUnitDisplay": null,
+        "wasPriceDisplay": null,
+        "additionalInfo": null
+      },
+      "countryExtensions": null,
+      "assets": [
+        {
+          "url": "https://dm.emea.cms.aldi.cx/is/image/aldiprodeu/product/jpg/scaleWidth/{width}/a3a42a2b-c96f-447c-8b7a-336fa01778b2/{slug}",
+          "maxWidth": 1500,
+          "maxHeight": 1500,
+          "mimeType": "image/*",
+          "assetType": "FR01"
+        }
+      ]
+    },
+    {
+      "sku": "000000000000558048",
+      "name": "Aged Feta Cheese",
+      "brandName": "SPECIALLY SELECTED",
+      "urlSlugText": "specially-selected-aged-feta-cheese",
+      "ageRestriction": null,
+      "alcohol": null,
+      "discontinued": false,
+      "discontinuedNote": null,
+      "notForSale": true,
+      "notForSaleReason": null,
+      "quantityMin": 1,
+      "quantityMax": 99,
+      "quantityInterval": 1,
+      "quantityDefault": 1,
+      "quantityUnit": "ea",
+      "weightType": "0",
+      "sellingSize": "0.2 KG",
+      "onSaleDateDisplay": null,
+      "price": {
+        "amount": 279,
+        "amountRelevant": 279,
+        "amountRelevantDisplay": "£2.79",
+        "bottleDeposit": 0,
+        "bottleDepositDisplay": "£0.00",
+        "comparison": 1395,
+        "comparisonDisplay": "£13.95/1KG",
+        "currencyCode": "GBP",
+        "currencySymbol": "£",
+        "perUnit": null,
+        "perUnitDisplay": null,
+        "wasPriceDisplay": null,
+        "additionalInfo": null
+      },
+      "countryExtensions": null,
+      "assets": [
+        {
+          "url": "https://dm.emea.cms.aldi.cx/is/image/aldiprodeu/product/jpg/scaleWidth/{width}/cd25717f-bb81-407c-8a3c-6dafd6741135/{slug}",
+          "maxWidth": 1500,
+          "maxHeight": 1500,
+          "mimeType": "image/*",
+          "assetType": "FR01"
+        }
+      ]
+    },
+    {
+      "sku": "000000000283099002",
+      "name": "Roquefort French Cheese",
+      "brandName": "SPECIALLY SELECTED",
+      "urlSlugText": "specially-selected-roquefort-french-cheese",
+      "ageRestriction": null,
+      "alcohol": null,
+      "discontinued": false,
+      "discontinuedNote": null,
+      "notForSale": true,
+      "notForSaleReason": null,
+      "quantityMin": 1,
+      "quantityMax": 99,
+      "quantityInterval": 1,
+      "quantityDefault": 1,
+      "quantityUnit": "ea",
+      "weightType": "0",
+      "sellingSize": "0.125 KG",
+      "onSaleDateDisplay": null,
+      "price": {
+        "amount": 259,
+        "amountRelevant": 259,
+        "amountRelevantDisplay": "£2.59",
+        "bottleDeposit": 0,
+        "bottleDepositDisplay": "£0.00",
+        "comparison": 2072,
+        "comparisonDisplay": "£20.72/1KG",
+        "currencyCode": "GBP",
+        "currencySymbol": "£",
+        "perUnit": null,
+        "perUnitDisplay": null,
+        "wasPriceDisplay": null,
+        "additionalInfo": null
+      },
+      "countryExtensions": null,
+      "assets": [
+        {
+          "url": "https://dm.emea.cms.aldi.cx/is/image/aldiprodeu/product/jpg/scaleWidth/{width}/a0156ce6-bc8e-44f2-a005-ea7e93812b3f/{slug}",
+          "maxWidth": 1500,
+          "maxHeight": 1500,
+          "mimeType": "image/*",
+          "assetType": "FR01"
+        }
+      ]
+    },
+    {
+      "sku": "000000000417200001",
+      "name": "Double Gloucester Cheese",
+      "brandName": "EMPORIUM",
+      "urlSlugText": "emporium-double-gloucester-cheese",
+      "ageRestriction": null,
+      "alcohol": null,
+      "discontinued": false,
+      "discontinuedNote": null,
+      "notForSale": true,
+      "notForSaleReason": null,
+      "quantityMin": 1,
+      "quantityMax": 99,
+      "quantityInterval": 1,
+      "quantityDefault": 1,
+      "quantityUnit": "ea",
+      "weightType": "0",
+      "sellingSize": "0.25 KG",
+      "onSaleDateDisplay": null,
+      "price": {
+        "amount": 185,
+        "amountRelevant": 185,
+        "amountRelevantDisplay": "£1.85",
+        "bottleDeposit": 0,
+        "bottleDepositDisplay": "£0.00",
+        "comparison": 740,
+        "comparisonDisplay": "£7.40/1KG",
+        "currencyCode": "GBP",
+        "currencySymbol": "£",
+        "perUnit": null,
+        "perUnitDisplay": null,
+        "wasPriceDisplay": null,
+        "additionalInfo": null
+      },
+      "countryExtensions": null,
+      "assets": [
+        {
+          "url": "https://dm.emea.cms.aldi.cx/is/image/aldiprodeu/product/jpg/scaleWidth/{width}/ca96b24a-8f63-47bd-a0d1-c1c96fde792a/{slug}",
+          "maxWidth": 1500,
+          "maxHeight": 1500,
+          "mimeType": "image/*",
+          "assetType": "FR01"
+        }
+      ]
+    },
+    {
+      "sku": "000000000417607001",
+      "name": "Grated Cheddar Cheese",
+      "brandName": "EVERYDAY ESSENTIALS",
+      "urlSlugText": "everyday-essentials-grated-cheddar-cheese",
+      "ageRestriction": null,
+      "alcohol": null,
+      "discontinued": false,
+      "discontinuedNote": null,
+      "notForSale": true,
+      "notForSaleReason": null,
+      "quantityMin": 1,
+      "quantityMax": 99,
+      "quantityInterval": 1,
+      "quantityDefault": 1,
+      "quantityUnit": "ea",
+      "weightType": "0",
+      "sellingSize": "0.5 KG",
+      "onSaleDateDisplay": null,
+      "price": {
+        "amount": 299,
+        "amountRelevant": 299,
+        "amountRelevantDisplay": "£2.99",
+        "bottleDeposit": 0,
+        "bottleDepositDisplay": "£0.00",
+        "comparison": 598,
+        "comparisonDisplay": "£5.98/1KG",
+        "currencyCode": "GBP",
+        "currencySymbol": "£",
+        "perUnit": null,
+        "perUnitDisplay": null,
+        "wasPriceDisplay": null,
+        "additionalInfo": null
+      },
+      "countryExtensions": null,
+      "assets": [
+        {
+          "url": "https://dm.emea.cms.aldi.cx/is/image/aldiprodeu/product/jpg/scaleWidth/{width}/9b003568-d70b-465c-bf20-ec400551281b/{slug}",
+          "maxWidth": 1500,
+          "maxHeight": 1500,
+          "mimeType": "image/*",
+          "assetType": "FR01"
+        }
+      ]
+    },
+    {
+      "sku": "000000000417607002",
+      "name": "Grated Mozzarella Cheese",
+      "brandName": "EVERYDAY ESSENTIALS",
+      "urlSlugText": "everyday-essentials-grated-mozzarella-cheese",
+      "ageRestriction": null,
+      "alcohol": null,
+      "discontinued": false,
+      "discontinuedNote": null,
+      "notForSale": true,
+      "notForSaleReason": null,
+      "quantityMin": 1,
+      "quantityMax": 99,
+      "quantityInterval": 1,
+      "quantityDefault": 1,
+      "quantityUnit": "ea",
+      "weightType": "0",
+      "sellingSize": "0.5 KG",
+      "onSaleDateDisplay": null,
+      "price": {
+        "amount": 299,
+        "amountRelevant": 299,
+        "amountRelevantDisplay": "£2.99",
+        "bottleDeposit": 0,
+        "bottleDepositDisplay": "£0.00",
+        "comparison": 598,
+        "comparisonDisplay": "£5.98/1KG",
+        "currencyCode": "GBP",
+        "currencySymbol": "£",
+        "perUnit": null,
+        "perUnitDisplay": null,
+        "wasPriceDisplay": null,
+        "additionalInfo": null
+      },
+      "countryExtensions": null,
+      "assets": [
+        {
+          "url": "https://dm.emea.cms.aldi.cx/is/image/aldiprodeu/product/jpg/scaleWidth/{width}/54580380-eef1-4cf0-85d7-49dfb72748f6/{slug}",
+          "maxWidth": 1500,
+          "maxHeight": 1500,
+          "mimeType": "image/*",
+          "assetType": "FR01"
+        }
+      ]
+    },
+    {
+      "sku": "000000000418129001",
+      "name": "Mature Cheese Spread",
+      "brandName": "EMPORIUM",
+      "urlSlugText": "emporium-mature-cheese-spread",
+      "ageRestriction": null,
+      "alcohol": null,
+      "discontinued": false,
+      "discontinuedNote": null,
+      "notForSale": true,
+      "notForSaleReason": null,
+      "quantityMin": 1,
+      "quantityMax": 99,
+      "quantityInterval": 1,
+      "quantityDefault": 1,
+      "quantityUnit": "ea",
+      "weightType": "0",
+      "sellingSize": "0.15 KG",
+      "onSaleDateDisplay": null,
+      "price": {
+        "amount": 125,
+        "amountRelevant": 125,
+        "amountRelevantDisplay": "£1.25",
+        "bottleDeposit": 0,
+        "bottleDepositDisplay": "£0.00",
+        "comparison": 833,
+        "comparisonDisplay": "£8.33/1KG",
+        "currencyCode": "GBP",
+        "currencySymbol": "£",
+        "perUnit": null,
+        "perUnitDisplay": null,
+        "wasPriceDisplay": null,
+        "additionalInfo": null
+      },
+      "countryExtensions": null,
+      "assets": [
+        {
+          "url": "https://dm.emea.cms.aldi.cx/is/image/aldiprodeu/product/jpg/scaleWidth/{width}/5cbe9318-a66c-413a-abf3-dda9ca28462e/{slug}",
+          "maxWidth": 1500,
+          "maxHeight": 1500,
+          "mimeType": "image/*",
+          "assetType": "FR01"
+        },
+        {
+          "url": "https://dm.emea.cms.aldi.cx/is/image/aldiprodeu/product/jpg/scaleWidth/{width}/4e0e45ee-78c9-4425-8e11-8cdb4806674c/{slug}",
+          "maxWidth": 1500,
+          "maxHeight": 1500,
+          "mimeType": "image/*",
+          "assetType": "FR02"
+        }
+      ]
+    },
+    {
+      "sku": "000000000418129002",
+      "name": "Mild Cheese Spread",
+      "brandName": "EMPORIUM",
+      "urlSlugText": "emporium-mild-cheese-spread",
+      "ageRestriction": null,
+      "alcohol": null,
+      "discontinued": false,
+      "discontinuedNote": null,
+      "notForSale": true,
+      "notForSaleReason": null,
+      "quantityMin": 1,
+      "quantityMax": 99,
+      "quantityInterval": 1,
+      "quantityDefault": 1,
+      "quantityUnit": "ea",
+      "weightType": "0",
+      "sellingSize": "0.15 KG",
+      "onSaleDateDisplay": null,
+      "price": {
+        "amount": 125,
+        "amountRelevant": 125,
+        "amountRelevantDisplay": "£1.25",
+        "bottleDeposit": 0,
+        "bottleDepositDisplay": "£0.00",
+        "comparison": 833,
+        "comparisonDisplay": "£8.33/1KG",
+        "currencyCode": "GBP",
+        "currencySymbol": "£",
+        "perUnit": null,
+        "perUnitDisplay": null,
+        "wasPriceDisplay": null,
+        "additionalInfo": null
+      },
+      "countryExtensions": null,
+      "assets": [
+        {
+          "url": "https://dm.emea.cms.aldi.cx/is/image/aldiprodeu/product/jpg/scaleWidth/{width}/94fa6ac7-2a12-4f95-86f1-eb7055213d7e/{slug}",
+          "maxWidth": 1500,
+          "maxHeight": 1500,
+          "mimeType": "image/*",
+          "assetType": "FR01"
+        },
+        {
+          "url": "https://dm.emea.cms.aldi.cx/is/image/aldiprodeu/product/jpg/scaleWidth/{width}/2e97fb34-2f83-4524-a854-127ec3f22a51/{slug}",
+          "maxWidth": 1500,
+          "maxHeight": 1500,
+          "mimeType": "image/*",
+          "assetType": "FR02"
+        }
+      ]
+    },
+    {
+      "sku": "000000000422367002",
+      "name": "Hard Goats Cheese",
+      "brandName": "EMPORIUM",
+      "urlSlugText": "emporium-hard-goats-cheese",
+      "ageRestriction": null,
+      "alcohol": null,
+      "discontinued": false,
+      "discontinuedNote": null,
+      "notForSale": true,
+      "notForSaleReason": null,
+      "quantityMin": 1,
+      "quantityMax": 99,
+      "quantityInterval": 1,
+      "quantityDefault": 1,
+      "quantityUnit": "ea",
+      "weightType": "0",
+      "sellingSize": "0.13 KG",
+      "onSaleDateDisplay": null,
+      "price": {
+        "amount": 199,
+        "amountRelevant": 199,
+        "amountRelevantDisplay": "£1.99",
+        "bottleDeposit": 0,
+        "bottleDepositDisplay": "£0.00",
+        "comparison": 1531,
+        "comparisonDisplay": "£15.31/1KG",
+        "currencyCode": "GBP",
+        "currencySymbol": "£",
+        "perUnit": null,
+        "perUnitDisplay": null,
+        "wasPriceDisplay": null,
+        "additionalInfo": null
+      },
+      "countryExtensions": null,
+      "assets": [
+        {
+          "url": "https://dm.emea.cms.aldi.cx/is/image/aldiprodeu/product/jpg/scaleWidth/{width}/3066164f-3788-4eff-8269-4c7944fff908/{slug}",
+          "maxWidth": 1500,
+          "maxHeight": 1500,
+          "mimeType": "image/*",
+          "assetType": "FR01"
+        }
+      ]
+    },
+    {
+      "sku": "000000000422367003",
+      "name": "Plain Goats Cheese",
+      "brandName": "EMPORIUM",
+      "urlSlugText": "emporium-plain-goats-cheese",
+      "ageRestriction": null,
+      "alcohol": null,
+      "discontinued": false,
+      "discontinuedNote": null,
+      "notForSale": true,
+      "notForSaleReason": null,
+      "quantityMin": 1,
+      "quantityMax": 99,
+      "quantityInterval": 1,
+      "quantityDefault": 1,
+      "quantityUnit": "ea",
+      "weightType": "0",
+      "sellingSize": "0.15 KG",
+      "onSaleDateDisplay": null,
+      "price": {
+        "amount": 199,
+        "amountRelevant": 199,
+        "amountRelevantDisplay": "£1.99",
+        "bottleDeposit": 0,
+        "bottleDepositDisplay": "£0.00",
+        "comparison": 1327,
+        "comparisonDisplay": "£13.27/1KG",
+        "currencyCode": "GBP",
+        "currencySymbol": "£",
+        "perUnit": null,
+        "perUnitDisplay": null,
+        "wasPriceDisplay": null,
+        "additionalInfo": null
+      },
+      "countryExtensions": null,
+      "assets": [
+        {
+          "url": "https://dm.emea.cms.aldi.cx/is/image/aldiprodeu/product/jpg/scaleWidth/{width}/bad3c9b2-55db-4874-b598-ed6ff5db0c7b/{slug}",
+          "maxWidth": 1500,
+          "maxHeight": 1500,
+          "mimeType": "image/*",
+          "assetType": "FR01"
+        }
+      ]
+    },
+    {
+      "sku": "000000000423346001",
+      "name": "Smoked Cheddar Cheese",
+      "brandName": "EMPORIUM",
+      "urlSlugText": "emporium-smoked-cheddar-cheese",
+      "ageRestriction": null,
+      "alcohol": null,
+      "discontinued": false,
+      "discontinuedNote": null,
+      "notForSale": true,
+      "notForSaleReason": null,
+      "quantityMin": 1,
+      "quantityMax": 99,
+      "quantityInterval": 1,
+      "quantityDefault": 1,
+      "quantityUnit": "ea",
+      "weightType": "0",
+      "sellingSize": "0.2 KG",
+      "onSaleDateDisplay": null,
+      "price": {
+        "amount": 199,
+        "amountRelevant": 199,
+        "amountRelevantDisplay": "£1.99",
+        "bottleDeposit": 0,
+        "bottleDepositDisplay": "£0.00",
+        "comparison": 995,
+        "comparisonDisplay": "£9.95/1KG",
+        "currencyCode": "GBP",
+        "currencySymbol": "£",
+        "perUnit": null,
+        "perUnitDisplay": null,
+        "wasPriceDisplay": null,
+        "additionalInfo": null
+      },
+      "countryExtensions": null,
+      "assets": [
+        {
+          "url": "https://dm.emea.cms.aldi.cx/is/image/aldiprodeu/product/jpg/scaleWidth/{width}/8152ff06-a3d6-42d7-920f-c25b7773f9e7/{slug}",
+          "maxWidth": 1500,
+          "maxHeight": 1500,
+          "mimeType": "image/*",
+          "assetType": "FR01"
+        }
+      ]
+    },
+    {
+      "sku": "000000000423346002",
+      "name": "Spicy Cheddar Cheese",
+      "brandName": "EMPORIUM",
+      "urlSlugText": "emporium-spicy-cheddar-cheese",
+      "ageRestriction": null,
+      "alcohol": null,
+      "discontinued": false,
+      "discontinuedNote": null,
+      "notForSale": true,
+      "notForSaleReason": null,
+      "quantityMin": 1,
+      "quantityMax": 99,
+      "quantityInterval": 1,
+      "quantityDefault": 1,
+      "quantityUnit": "ea",
+      "weightType": "0",
+      "sellingSize": "0.2 KG",
+      "onSaleDateDisplay": null,
+      "price": {
+        "amount": 199,
+        "amountRelevant": 199,
+        "amountRelevantDisplay": "£1.99",
+        "bottleDeposit": 0,
+        "bottleDepositDisplay": "£0.00",
+        "comparison": 995,
+        "comparisonDisplay": "£9.95/1KG",
+        "currencyCode": "GBP",
+        "currencySymbol": "£",
+        "perUnit": null,
+        "perUnitDisplay": null,
+        "wasPriceDisplay": null,
+        "additionalInfo": null
+      },
+      "countryExtensions": null,
+      "assets": [
+        {
+          "url": "https://dm.emea.cms.aldi.cx/is/image/aldiprodeu/product/jpg/scaleWidth/{width}/742fc33a-fb40-4a39-8619-a34780f5c8ed/{slug}",
+          "maxWidth": 1500,
+          "maxHeight": 1500,
+          "mimeType": "image/*",
+          "assetType": "FR01"
+        }
+      ]
+    },
+    {
+      "sku": "000000000423346003",
+      "name": "Wensleydale with Cranberry Cheese",
+      "brandName": "EMPORIUM",
+      "urlSlugText": "emporium-wensleydale-with-cranberry-cheese",
+      "ageRestriction": null,
+      "alcohol": null,
+      "discontinued": false,
+      "discontinuedNote": null,
+      "notForSale": true,
+      "notForSaleReason": null,
+      "quantityMin": 1,
+      "quantityMax": 99,
+      "quantityInterval": 1,
+      "quantityDefault": 1,
+      "quantityUnit": "ea",
+      "weightType": "0",
+      "sellingSize": "0.2 KG",
+      "onSaleDateDisplay": null,
+      "price": {
+        "amount": 199,
+        "amountRelevant": 199,
+        "amountRelevantDisplay": "£1.99",
+        "bottleDeposit": 0,
+        "bottleDepositDisplay": "£0.00",
+        "comparison": 995,
+        "comparisonDisplay": "£9.95/1KG",
+        "currencyCode": "GBP",
+        "currencySymbol": "£",
+        "perUnit": null,
+        "perUnitDisplay": null,
+        "wasPriceDisplay": null,
+        "additionalInfo": null
+      },
+      "countryExtensions": null,
+      "assets": [
+        {
+          "url": "https://dm.emea.cms.aldi.cx/is/image/aldiprodeu/product/jpg/scaleWidth/{width}/13f689e4-f064-4ec7-86ec-acd82416cfc0/{slug}",
+          "maxWidth": 1500,
+          "maxHeight": 1500,
+          "mimeType": "image/*",
+          "assetType": "FR01"
+        }
+      ]
+    },
+    {
+      "sku": "000000000423385001",
+      "name": "Edam Cheese Slices",
+      "brandName": "EMPORIUM",
+      "urlSlugText": "emporium-edam-cheese-slices",
+      "ageRestriction": null,
+      "alcohol": null,
+      "discontinued": false,
+      "discontinuedNote": null,
+      "notForSale": true,
+      "notForSaleReason": null,
+      "quantityMin": 1,
+      "quantityMax": 99,
+      "quantityInterval": 1,
+      "quantityDefault": 1,
+      "quantityUnit": "ea",
+      "weightType": "0",
+      "sellingSize": "0.4 KG",
+      "onSaleDateDisplay": null,
+      "price": {
+        "amount": 299,
+        "amountRelevant": 299,
+        "amountRelevantDisplay": "£2.99",
+        "bottleDeposit": 0,
+        "bottleDepositDisplay": "£0.00",
+        "comparison": 748,
+        "comparisonDisplay": "£7.48/1KG",
+        "currencyCode": "GBP",
+        "currencySymbol": "£",
+        "perUnit": null,
+        "perUnitDisplay": null,
+        "wasPriceDisplay": null,
+        "additionalInfo": null
+      },
+      "countryExtensions": null,
+      "assets": [
+        {
+          "url": "https://dm.emea.cms.aldi.cx/is/image/aldiprodeu/product/jpg/scaleWidth/{width}/b2c04456-0320-487c-a7c1-fd363f1f10d2/{slug}",
+          "maxWidth": 1500,
+          "maxHeight": 1500,
+          "mimeType": "image/*",
+          "assetType": "FR01"
+        }
+      ]
+    },
+    {
+      "sku": "000000000423385002",
+      "name": "Gouda Cheese Slices",
+      "brandName": "EMPORIUM",
+      "urlSlugText": "emporium-gouda-cheese-slices",
+      "ageRestriction": null,
+      "alcohol": null,
+      "discontinued": false,
+      "discontinuedNote": null,
+      "notForSale": true,
+      "notForSaleReason": null,
+      "quantityMin": 1,
+      "quantityMax": 99,
+      "quantityInterval": 1,
+      "quantityDefault": 1,
+      "quantityUnit": "ea",
+      "weightType": "0",
+      "sellingSize": "0.4 KG",
+      "onSaleDateDisplay": null,
+      "price": {
+        "amount": 299,
+        "amountRelevant": 299,
+        "amountRelevantDisplay": "£2.99",
+        "bottleDeposit": 0,
+        "bottleDepositDisplay": "£0.00",
+        "comparison": 748,
+        "comparisonDisplay": "£7.48/1KG",
+        "currencyCode": "GBP",
+        "currencySymbol": "£",
+        "perUnit": null,
+        "perUnitDisplay": null,
+        "wasPriceDisplay": null,
+        "additionalInfo": null
+      },
+      "countryExtensions": null,
+      "assets": [
+        {
+          "url": "https://dm.emea.cms.aldi.cx/is/image/aldiprodeu/product/jpg/scaleWidth/{width}/2ed4f004-899a-4479-86f5-ed9fba80135f/{slug}",
+          "maxWidth": 1500,
+          "maxHeight": 1500,
+          "mimeType": "image/*",
+          "assetType": "FR01"
+        }
+      ]
+    },
+    {
+      "sku": "000000000491339001",
+      "name": "Ricotta Soft Cheese",
+      "brandName": "EMPORIUM",
+      "urlSlugText": "emporium-ricotta-soft-cheese",
+      "ageRestriction": null,
+      "alcohol": null,
+      "discontinued": false,
+      "discontinuedNote": null,
+      "notForSale": true,
+      "notForSaleReason": null,
+      "quantityMin": 1,
+      "quantityMax": 99,
+      "quantityInterval": 1,
+      "quantityDefault": 1,
+      "quantityUnit": "ea",
+      "weightType": "0",
+      "sellingSize": "0.25 KG",
+      "onSaleDateDisplay": null,
+      "price": {
+        "amount": 129,
+        "amountRelevant": 129,
+        "amountRelevantDisplay": "£1.29",
+        "bottleDeposit": 0,
+        "bottleDepositDisplay": "£0.00",
+        "comparison": 516,
+        "comparisonDisplay": "£5.16/1KG",
+        "currencyCode": "GBP",
+        "currencySymbol": "£",
+        "perUnit": null,
+        "perUnitDisplay": null,
+        "wasPriceDisplay": null,
+        "additionalInfo": null
+      },
+      "countryExtensions": null,
+      "assets": [
+        {
+          "url": "https://dm.emea.cms.aldi.cx/is/image/aldiprodeu/product/jpg/scaleWidth/{width}/2018556c-525a-4c26-8a23-82b50efe4695/{slug}",
+          "maxWidth": 1500,
+          "maxHeight": 1500,
+          "mimeType": "image/*",
+          "assetType": "FR01"
+        }
+      ]
+    },
+    {
+      "sku": "000000000491339002",
+      "name": "Mascarpone Soft Cheese",
+      "brandName": "EMPORIUM",
+      "urlSlugText": "emporium-mascarpone-soft-cheese",
+      "ageRestriction": null,
+      "alcohol": null,
+      "discontinued": false,
+      "discontinuedNote": null,
+      "notForSale": true,
+      "notForSaleReason": null,
+      "quantityMin": 1,
+      "quantityMax": 99,
+      "quantityInterval": 1,
+      "quantityDefault": 1,
+      "quantityUnit": "ea",
+      "weightType": "0",
+      "sellingSize": "0.25 KG",
+      "onSaleDateDisplay": null,
+      "price": {
+        "amount": 129,
+        "amountRelevant": 129,
+        "amountRelevantDisplay": "£1.29",
+        "bottleDeposit": 0,
+        "bottleDepositDisplay": "£0.00",
+        "comparison": 516,
+        "comparisonDisplay": "£5.16/1KG",
+        "currencyCode": "GBP",
+        "currencySymbol": "£",
+        "perUnit": null,
+        "perUnitDisplay": null,
+        "wasPriceDisplay": null,
+        "additionalInfo": null
+      },
+      "countryExtensions": null,
+      "assets": [
+        {
+          "url": "https://dm.emea.cms.aldi.cx/is/image/aldiprodeu/product/jpg/scaleWidth/{width}/f75ea153-691c-4af5-a89d-6d8926290868/{slug}",
+          "maxWidth": 1500,
+          "maxHeight": 1500,
+          "mimeType": "image/*",
+          "assetType": "FR01"
+        }
+      ]
+    },
+    {
+      "sku": "000000000549702002",
+      "name": "Classic Grilling Cheese",
+      "brandName": "EMPORIUM",
+      "urlSlugText": "emporium-classic-grilling-cheese",
+      "ageRestriction": null,
+      "alcohol": null,
+      "discontinued": false,
+      "discontinuedNote": null,
+      "notForSale": true,
+      "notForSaleReason": null,
+      "quantityMin": 1,
+      "quantityMax": 99,
+      "quantityInterval": 1,
+      "quantityDefault": 1,
+      "quantityUnit": "ea",
+      "weightType": "0",
+      "sellingSize": "0.2 KG",
+      "onSaleDateDisplay": null,
+      "price": {
+        "amount": 159,
+        "amountRelevant": 159,
+        "amountRelevantDisplay": "£1.59",
+        "bottleDeposit": 0,
+        "bottleDepositDisplay": "£0.00",
+        "comparison": 795,
+        "comparisonDisplay": "£7.95/1KG",
+        "currencyCode": "GBP",
+        "currencySymbol": "£",
+        "perUnit": null,
+        "perUnitDisplay": null,
+        "wasPriceDisplay": null,
+        "additionalInfo": null
+      },
+      "countryExtensions": null,
+      "assets": [
+        {
+          "url": "https://dm.emea.cms.aldi.cx/is/image/aldiprodeu/product/jpg/scaleWidth/{width}/ad387383-8704-46eb-8262-684cf012630f/{slug}",
+          "maxWidth": 1500,
+          "maxHeight": 1500,
+          "mimeType": "image/*",
+          "assetType": "FR01"
+        }
+      ]
+    },
+    {
+      "sku": "000000000549996002",
+      "name": "Lighter Mature Cheese",
+      "brandName": "EMPORIUM",
+      "urlSlugText": "emporium-lighter-mature-cheese",
+      "ageRestriction": null,
+      "alcohol": null,
+      "discontinued": false,
+      "discontinuedNote": null,
+      "notForSale": true,
+      "notForSaleReason": null,
+      "quantityMin": 1,
+      "quantityMax": 99,
+      "quantityInterval": 1,
+      "quantityDefault": 1,
+      "quantityUnit": "ea",
+      "weightType": "0",
+      "sellingSize": "0.4 KG",
+      "onSaleDateDisplay": null,
+      "price": {
+        "amount": 279,
+        "amountRelevant": 279,
+        "amountRelevantDisplay": "£2.79",
+        "bottleDeposit": 0,
+        "bottleDepositDisplay": "£0.00",
+        "comparison": 698,
+        "comparisonDisplay": "£6.98/1KG",
+        "currencyCode": "GBP",
+        "currencySymbol": "£",
+        "perUnit": null,
+        "perUnitDisplay": null,
+        "wasPriceDisplay": null,
+        "additionalInfo": null
+      },
+      "countryExtensions": null,
+      "assets": [
+        {
+          "url": "https://dm.emea.cms.aldi.cx/is/image/aldiprodeu/product/jpg/scaleWidth/{width}/6b18c6ed-a129-4c52-990e-0ad3d0a63264/{slug}",
+          "maxWidth": 1500,
+          "maxHeight": 1500,
+          "mimeType": "image/*",
+          "assetType": "FR01"
+        }
+      ]
+    },
+    {
+      "sku": "000000000482344001",
+      "name": "Extra Mature Cheese",
+      "brandName": "CATHEDRAL CITY",
+      "urlSlugText": "cathedral-city-extra-mature-cheese",
+      "ageRestriction": null,
+      "alcohol": null,
+      "discontinued": false,
+      "discontinuedNote": null,
+      "notForSale": true,
+      "notForSaleReason": null,
+      "quantityMin": 1,
+      "quantityMax": 99,
+      "quantityInterval": 1,
+      "quantityDefault": 1,
+      "quantityUnit": "ea",
+      "weightType": "0",
+      "sellingSize": "0.35 KG",
+      "onSaleDateDisplay": null,
+      "price": {
+        "amount": 325,
+        "amountRelevant": 325,
+        "amountRelevantDisplay": "£3.25",
+        "bottleDeposit": 0,
+        "bottleDepositDisplay": "£0.00",
+        "comparison": 929,
+        "comparisonDisplay": "£9.29/1KG",
+        "currencyCode": "GBP",
+        "currencySymbol": "£",
+        "perUnit": null,
+        "perUnitDisplay": null,
+        "wasPriceDisplay": null,
+        "additionalInfo": null
+      },
+      "countryExtensions": null,
+      "assets": [
+        {
+          "url": "https://dm.emea.cms.aldi.cx/is/image/aldiprodeu/product/jpg/scaleWidth/{width}/87103aef-0cb2-418e-be74-2337a18556de/{slug}",
+          "maxWidth": 1500,
+          "maxHeight": 1500,
+          "mimeType": "image/*",
+          "assetType": "FR01"
+        }
+      ]
+    },
+    {
+      "sku": "000000000549702001",
+      "name": "Chilli Grilling cheese",
+      "brandName": "EMPORIUM",
+      "urlSlugText": "emporium-chilli-grilling-cheese",
+      "ageRestriction": null,
+      "alcohol": null,
+      "discontinued": false,
+      "discontinuedNote": null,
+      "notForSale": true,
+      "notForSaleReason": null,
+      "quantityMin": 1,
+      "quantityMax": 99,
+      "quantityInterval": 1,
+      "quantityDefault": 1,
+      "quantityUnit": "ea",
+      "weightType": "0",
+      "sellingSize": "0.2 KG",
+      "onSaleDateDisplay": null,
+      "price": {
+        "amount": 159,
+        "amountRelevant": 159,
+        "amountRelevantDisplay": "£1.59",
+        "bottleDeposit": 0,
+        "bottleDepositDisplay": "£0.00",
+        "comparison": 795,
+        "comparisonDisplay": "£7.95/1KG",
+        "currencyCode": "GBP",
+        "currencySymbol": "£",
+        "perUnit": null,
+        "perUnitDisplay": null,
+        "wasPriceDisplay": null,
+        "additionalInfo": null
+      },
+      "countryExtensions": null,
+      "assets": [
+        {
+          "url": "https://dm.emea.cms.aldi.cx/is/image/aldiprodeu/product/jpg/scaleWidth/{width}/3136108a-3b7a-447f-96ee-56c8566a5e88/{slug}",
+          "maxWidth": 1500,
+          "maxHeight": 1500,
+          "mimeType": "image/*",
+          "assetType": "FR02"
+        }
+      ]
+    },
+    {
+      "sku": "000000000278699001",
+      "name": "Grated Grana Padano Cheese",
+      "brandName": "EMPORIUM",
+      "urlSlugText": "emporium-grana-padano-cheese",
+      "ageRestriction": null,
+      "alcohol": null,
+      "discontinued": false,
+      "discontinuedNote": null,
+      "notForSale": true,
+      "notForSaleReason": null,
+      "quantityMin": 1,
+      "quantityMax": 99,
+      "quantityInterval": 1,
+      "quantityDefault": 1,
+      "quantityUnit": "ea",
+      "weightType": "0",
+      "sellingSize": "0.1 KG",
+      "onSaleDateDisplay": null,
+      "price": {
+        "amount": 165,
+        "amountRelevant": 165,
+        "amountRelevantDisplay": "£1.65",
+        "bottleDeposit": 0,
+        "bottleDepositDisplay": "£0.00",
+        "comparison": 1650,
+        "comparisonDisplay": "£16.50/1KG",
+        "currencyCode": "GBP",
+        "currencySymbol": "£",
+        "perUnit": null,
+        "perUnitDisplay": null,
+        "wasPriceDisplay": null,
+        "additionalInfo": null
+      },
+      "countryExtensions": null,
+      "assets": [
+        {
+          "url": "https://dm.emea.cms.aldi.cx/is/image/aldiprodeu/product/jpg/scaleWidth/{width}/ded8a82d-5c14-4018-9276-1dc20ca77ea5/{slug}",
+          "maxWidth": 1500,
+          "maxHeight": 1500,
+          "mimeType": "image/*",
+          "assetType": "FR01"
+        }
+      ]
+    },
+    {
+      "sku": "000000000278699002",
+      "name": "Parmigiano Reggiano Shaved Cheese",
+      "brandName": "EMPORIUM",
+      "urlSlugText": "emporium-parmigiano-reggiano-shaved-cheese",
+      "ageRestriction": null,
+      "alcohol": null,
+      "discontinued": false,
+      "discontinuedNote": null,
+      "notForSale": true,
+      "notForSaleReason": null,
+      "quantityMin": 1,
+      "quantityMax": 99,
+      "quantityInterval": 1,
+      "quantityDefault": 1,
+      "quantityUnit": "ea",
+      "weightType": "0",
+      "sellingSize": "0.08 KG",
+      "onSaleDateDisplay": null,
+      "price": {
+        "amount": 165,
+        "amountRelevant": 165,
+        "amountRelevantDisplay": "£1.65",
+        "bottleDeposit": 0,
+        "bottleDepositDisplay": "£0.00",
+        "comparison": 2063,
+        "comparisonDisplay": "£20.63/1KG",
+        "currencyCode": "GBP",
+        "currencySymbol": "£",
+        "perUnit": null,
+        "perUnitDisplay": null,
+        "wasPriceDisplay": null,
+        "additionalInfo": null
+      },
+      "countryExtensions": null,
+      "assets": [
+        {
+          "url": "https://dm.emea.cms.aldi.cx/is/image/aldiprodeu/product/jpg/scaleWidth/{width}/b8eeefec-8a6c-4a63-9235-dc01a0cb3357/{slug}",
+          "maxWidth": 1500,
+          "maxHeight": 1500,
+          "mimeType": "image/*",
+          "assetType": "FR01"
+        }
+      ]
+    }
+  ]
+}

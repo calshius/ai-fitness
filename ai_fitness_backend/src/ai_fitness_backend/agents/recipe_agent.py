@@ -7,7 +7,6 @@ from ..scrapers.sainsburys_scraper import SainsburysScraper
 from ..scrapers.morrisons_scraper import MorrisonsScraper
 from ..scrapers.marks_and_spencer_scraper import MarksAndSpencerScraper
 from ..scrapers.aldi_scraper import AldiScraper
-from ..scrapers.lidl_scraper import LidlScraper
 from ..llm import get_llm_response
 
 logger = logging.getLogger("ai_fitness_api")
@@ -23,7 +22,6 @@ class RecipeAgent:
             "morrisons": MorrisonsScraper(),
             "marks_spencer": MarksAndSpencerScraper(),
             "aldi": AldiScraper(),
-            "lidl": LidlScraper(),
         }
 
     async def get_ingredients(

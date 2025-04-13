@@ -21,24 +21,24 @@ class MarksAndSpencerScraper(BaseScraper):
     async def search_product(self, product_name: str) -> List[Dict[str, Any]]:
         """Search for a product in Marks & Spencer"""
         logger.info(f"Searching for {product_name} in Marks & Spencer")
-        
+
         # First, get the final URL after all redirects
         initial_url = f"{self.search_url}?searchType=normal&searchTerm={product_name}"
         final_url = await self._get_final_redirect_url(initial_url)
-        
+
         if not final_url:
             logger.error("Failed to get final redirect URL")
             return []
-        
+
         logger.info(f"Final URL after redirects: {final_url}")
-        
+
         # Now make the actual request to the final URL
         html_content = await self._make_api_request(final_url)
-        
+
         if not html_content:
             logger.error("Failed to get HTML content from final URL")
             return []
-        
+
         # Parse the HTML content
         return self._parse_html_results(html_content, product_name)
 
@@ -47,26 +47,24 @@ class MarksAndSpencerScraper(BaseScraper):
         headers = self._get_headers()
         cookie_str = self._get_cookie_string()
         headers["Cookie"] = cookie_str
-        
+
         logger.info(f"Following redirects from: {url}")
         logger.info(f"Using cookie: {cookie_str}")
-        
+
         try:
             async with aiohttp.ClientSession() as session:
                 # Make a HEAD request first to follow redirects without downloading content
                 async with session.head(
-                    url,
-                    headers=headers,
-                    allow_redirects=True,
-                    max_redirects=10
+                    url, headers=headers, allow_redirects=True, max_redirects=10
                 ) as response:
                     final_url = str(response.url)
                     logger.info(f"Final URL after redirects: {final_url}")
                     return final_url
-                    
+
         except Exception as e:
             logger.error(f"Error following redirects: {str(e)}")
             import traceback
+
             logger.error(traceback.format_exc())
             return None
 
@@ -75,26 +73,26 @@ class MarksAndSpencerScraper(BaseScraper):
         headers = self._get_headers()
         cookie_str = self._get_cookie_string()
         headers["Cookie"] = cookie_str
-        
+
         # Add referer header for the actual request
         headers["referer"] = self.base_url
-        
+
         logger.info(f"Making API request to: {url}")
-        
+
         # Maximum number of retries
         max_retries = 3
-        
+
         for attempt in range(max_retries):
             try:
                 timeout = aiohttp.ClientTimeout(total=30)
-                
+
                 async with aiohttp.ClientSession(timeout=timeout) as session:
                     logger.info(f"Request attempt {attempt + 1}/{max_retries}")
-                    
+
                     async with session.get(
                         url,
                         headers=headers,
-                        allow_redirects=True  # Allow redirects for simplicity
+                        allow_redirects=True,  # Allow redirects for simplicity
                     ) as response:
                         if response.status == 200:
                             html_content = await response.text()
@@ -102,22 +100,22 @@ class MarksAndSpencerScraper(BaseScraper):
                             return html_content
                         else:
                             logger.error(f"Error in API request: {response.status}")
-                
+
                 # Wait before retrying (exponential backoff)
                 if attempt < max_retries - 1:
-                    wait_time = 2 ** attempt
+                    wait_time = 2**attempt
                     logger.info(f"Waiting {wait_time} seconds before retrying...")
                     await asyncio.sleep(wait_time)
-                    
+
             except Exception as e:
                 logger.error(f"Error in API request (attempt {attempt + 1}): {str(e)}")
-                
+
                 # Wait before retrying (exponential backoff)
                 if attempt < max_retries - 1:
-                    wait_time = 2 ** attempt
+                    wait_time = 2**attempt
                     logger.info(f"Waiting {wait_time} seconds before retrying...")
                     await asyncio.sleep(wait_time)
-        
+
         logger.error(f"Failed to make API request after {max_retries} attempts")
         return None
 
@@ -137,14 +135,14 @@ class MarksAndSpencerScraper(BaseScraper):
             "sec-fetch-site": "same-origin",
             "sec-fetch-user": "?1",
             "sec-gpc": "1",
-            "upgrade-insecure-requests": "1"
+            "upgrade-insecure-requests": "1",
         }
 
     def _get_cookie_string(self) -> str:
         """Get cookie string for the request"""
         store_cookie = {"id": "657", "name": "GLASGOW ARGYLE STREET"}
         country_cookie = "GB"
-        return f'MS_FOOD_STORE={json.dumps(store_cookie)}; MS_ORIGIN_COUNTRY={country_cookie};'
+        return f"MS_FOOD_STORE={json.dumps(store_cookie)}; MS_ORIGIN_COUNTRY={country_cookie};"
 
     def _parse_html_results(
         self, html_content: str, product_name: str

@@ -1,0 +1,1 @@
+curl 'https://api.aldi.co.uk/v3/product-search?currency=GBP&serviceType=walk-in&q=cheese&limit=30&offset=0&sort=relevance&testVariant=A&servicePoint=C092' 

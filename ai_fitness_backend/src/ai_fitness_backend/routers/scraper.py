@@ -6,6 +6,7 @@ from ..scrapers.tesco_scraper import TescoScraper
 from ..scrapers.morrisons_scraper import MorrisonsScraper
 from ..scrapers.sainsburys_scraper import SainsburysScraper
 from ..scrapers.marks_and_spencer_scraper import MarksAndSpencerScraper
+from ..scrapers.aldi_scraper import AldiScraper
 from ..models import ScraperRequest, ScraperResponse
 
 # Set up logging
@@ -129,4 +130,32 @@ async def search_mns(request: ScraperRequest):
 
     except Exception as e:
         logger.error(f"Error searching MarksAndSpencer: {str(e)}", exc_info=True)
+        raise HTTPException(status_code=500, detail=f"Error searching Tesco: {str(e)}")
+
+
+@router.post("/aldi", response_model=ScraperResponse)
+async def search_aldi(request: ScraperRequest):
+    """
+    Search for a food item on Aldi website and return basic information.
+
+    - **product_name**: Name of the food item to search for
+    """
+    logger.info(f"Received Aldi search request for: '{request.product_name}'")
+
+    try:
+        # Initialize the Aldi scraper
+        scraper = AldiScraper()
+
+        # Search for the product
+        results = await scraper.search_product(request.product_name)
+
+        logger.info(f"Found {len(results)} results for '{request.product_name}'")
+
+        return ScraperResponse(
+            message=f"Successfully searched for '{request.product_name}'",
+            results=results,
+        )
+
+    except Exception as e:
+        logger.error(f"Error searching Aldi: {str(e)}", exc_info=True)
         raise HTTPException(status_code=500, detail=f"Error searching Tesco: {str(e)}")
