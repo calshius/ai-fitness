@@ -1,0 +1,17 @@
+curl -L 'https://www.marksandspencer.com/search?searchType=normal&searchTerm=chicken' \
+  -H 'accept: application/json' \
+  -H 'accept-language: en-US,en;q=0.8' \
+  -b 'MS_FOOD_STORE={"id":"657","name":"GLASGOW ARGYLE STREET"}; MS_ORIGIN_COUNTRY=GB;' \
+  -H 'dnt: 1' \
+  -H 'priority: u=0, i' \
+  -H 'referer: https://www.marksandspencer.com/food/l/dairy/cheese' \
+  -H 'sec-ch-ua: "Brave";v="135", "Not-A.Brand";v="8", "Chromium";v="135"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Windows"' \
+  -H 'sec-fetch-dest: document' \
+  -H 'sec-fetch-mode: navigate' \
+  -H 'sec-fetch-site: same-origin' \
+  -H 'sec-fetch-user: ?1' \
+  -H 'sec-gpc: 1' \
+  -H 'upgrade-insecure-requests: 1' \
+  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36'

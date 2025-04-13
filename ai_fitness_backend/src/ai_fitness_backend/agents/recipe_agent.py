@@ -5,7 +5,7 @@ from typing import List, Dict, Any
 from ..scrapers.tesco_scraper import TescoScraper
 from ..scrapers.sainsburys_scraper import SainsburysScraper
 from ..scrapers.morrisons_scraper import MorrisonsScraper
-from ..scrapers.marks_spencer_scraper import MarksSpencerScraper
+from ..scrapers.marks_and_spencer_scraper import MarksAndSpencerScraper
 from ..scrapers.aldi_scraper import AldiScraper
 from ..scrapers.lidl_scraper import LidlScraper
 from ..llm import get_llm_response
@@ -21,7 +21,7 @@ class RecipeAgent:
             "tesco": TescoScraper(),
             "sainsburys": SainsburysScraper(),
             "morrisons": MorrisonsScraper(),
-            "marks_spencer": MarksSpencerScraper(),
+            "marks_spencer": MarksAndSpencerScraper(),
             "aldi": AldiScraper(),
             "lidl": LidlScraper(),
         }
