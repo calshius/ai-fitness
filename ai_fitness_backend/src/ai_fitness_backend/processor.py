@@ -7,7 +7,7 @@ from sentence_transformers import SentenceTransformer
 from sklearn.metrics.pairwise import cosine_similarity
 from sqlalchemy.orm import Session
 
-from .database import Document, Embedding
+from .database import Document, Embedding, User
 
 # Set up logging
 logger = logging.getLogger("ai_fitness_api.processor")
@@ -35,6 +35,22 @@ class FitnessDataProcessor:
         self.document_embeddings = None
         self.documents = None
         self.db = db
+        self.default_user = None
+
+        # Get default user if db is provided
+        if self.db:
+            try:
+                self.default_user = (
+                    self.db.query(User).filter(User.user_id == "Callum").first()
+                )
+                if self.default_user:
+                    logger.info(
+                        f"Using default user: {self.default_user.user_id} (ID: {self.default_user.id})"
+                    )
+                else:
+                    logger.warning("Default user 'Callum' not found in database")
+            except Exception as e:
+                logger.error(f"Error getting default user: {str(e)}")
 
         # Create data directory if it doesn't exist
         try:
@@ -148,7 +164,7 @@ class FitnessDataProcessor:
                 daily_fat = group["Fat (g)"].sum()
 
                 doc = (
-                    f"Date: {date_str}. Nutrition summary: Total calories: {daily_calories:.1f}, "
+                    f"Date: {date_str}. User: Callum. Nutrition summary: Total calories: {daily_calories:.1f}, "
                     f"Protein: {daily_protein:.1f}g, Carbs: {daily_carbs:.1f}g, Fat: {daily_fat:.1f}g. "
                 )
 
@@ -174,7 +190,7 @@ class FitnessDataProcessor:
                 steps = group["Steps"].sum()
 
                 doc = (
-                    f"Date: {date_str}. Exercise summary: Burned {total_calories:.1f} calories, "
+                    f"Date: {date_str}. User: Callum. Exercise summary: Burned {total_calories:.1f} calories, "
                     f"Exercised for {total_minutes} minutes, Steps: {steps}. "
                 )
 
@@ -196,7 +212,7 @@ class FitnessDataProcessor:
             measurement_docs_count = 0
             for _, row in self.measurement_data.iterrows():
                 date_str = row["Date"].strftime("%Y-%m-%d")
-                doc = f"Date: {date_str}. Measurement: Weight {row['Weight']} kg."
+                doc = f"Date: {date_str}. User: Callum. Measurement: Weight {row['Weight']} kg."
                 documents.append({"text": doc, "type": "measurement", "date": date_str})
                 measurement_docs_count += 1
             logger.info(f"Created {measurement_docs_count} measurement documents")
@@ -208,7 +224,7 @@ class FitnessDataProcessor:
             for _, row in self.garmin_activities.iterrows():
                 date_str = row["Date"].strftime("%Y-%m-%d %H:%M:%S")
                 doc = (
-                    f"Date: {date_str}. Garmin activity: {row['Activity Type']}, "
+                    f"Date: {date_str}. User: Callum. Garmin activity: {row['Activity Type']}, "
                     f"Duration: {row['Total Time']}, Calories: {row['Calories']}"
                 )
 
@@ -240,7 +256,7 @@ class FitnessDataProcessor:
             avg_daily_fat = self.nutrition_data.groupby("Date")["Fat (g)"].sum().mean()
 
             summary_doc = (
-                f"Nutrition summary for the entire period: Average daily calories: {avg_daily_calories:.1f}, "
+                f"User: Callum. Nutrition summary for the entire period: Average daily calories: {avg_daily_calories:.1f}, "
                 f"Average daily protein: {avg_daily_protein:.1f}g, Average daily carbs: {avg_daily_carbs:.1f}g, "
                 f"Average daily fat: {avg_daily_fat:.1f}g."
             )
@@ -254,10 +270,26 @@ class FitnessDataProcessor:
             weight_change = final_weight - initial_weight
 
             weight_doc = (
-                f"Weight trend: Started at {initial_weight} kg and ended at {final_weight} kg. "
+                f"User: Callum. Weight trend: Started at {initial_weight} kg and ended at {final_weight} kg. "
                 f"Total change: {weight_change:.1f} kg over the period."
             )
             documents.append({"text": weight_doc, "type": "summary", "date": "all"})
+
+        # Add a user fitness profile document
+        fitness_profile_doc = (
+            f"User: Callum. user_id: Callum. Fitness profile: "
+            f"goal: gain_muscle, "
+            f"experience_level: intermediate, "
+            f'available_equipment: ["dumbbells", "barbell", "bench", "pull-up bar"], '
+            f"height: 183, "  # in cm
+            f"weight: {final_weight if self.measurement_data is not None and not self.measurement_data.empty else 80}, "  # in kg
+            f"age: 32, "
+            f"gender: male, "
+            f"activity_level: active"
+        )
+        documents.append(
+            {"text": fitness_profile_doc, "type": "fitness_profile", "date": "all"}
+        )
 
         self.documents = documents
         logger.info(
@@ -286,11 +318,26 @@ class FitnessDataProcessor:
             self.db.query(Document).delete()
             self.db.commit()
 
+            # Get the default user
+            if not self.default_user:
+                self.default_user = (
+                    self.db.query(User).filter(User.user_id == "Callum").first()
+                )
+                if not self.default_user:
+                    logger.warning(
+                        "Default user 'Callum' not found, documents will not be associated with a user"
+                    )
+
             # Add new documents
             logger.info("Adding new documents to database")
             db_documents = []
             for doc in self.documents:
-                db_doc = Document(text=doc["text"], type=doc["type"], date=doc["date"])
+                db_doc = Document(
+                    text=doc["text"],
+                    type=doc["type"],
+                    date=doc["date"],
+                    user_id=self.default_user.id if self.default_user else None,
+                )
                 self.db.add(db_doc)
                 db_documents.append(db_doc)
 
@@ -330,7 +377,33 @@ class FitnessDataProcessor:
         start_time = time.time()
 
         try:
-            db_documents = self.db.query(Document).all()
+            # Get the default user
+            if not self.default_user:
+                self.default_user = (
+                    self.db.query(User).filter(User.user_id == "Callum").first()
+                )
+                if not self.default_user:
+                    logger.warning(
+                        "Default user 'Callum' not found, loading all documents"
+                    )
+                    db_documents = self.db.query(Document).all()
+                else:
+                    logger.info(
+                        f"Loading documents for user: {self.default_user.user_id}"
+                    )
+                    db_documents = (
+                        self.db.query(Document)
+                        .filter(Document.user_id == self.default_user.id)
+                        .all()
+                    )
+            else:
+                logger.info(f"Loading documents for user: {self.default_user.user_id}")
+                db_documents = (
+                    self.db.query(Document)
+                    .filter(Document.user_id == self.default_user.id)
+                    .all()
+                )
+
             self.documents = [
                 {"text": doc.text, "type": doc.type, "date": doc.date}
                 for doc in db_documents

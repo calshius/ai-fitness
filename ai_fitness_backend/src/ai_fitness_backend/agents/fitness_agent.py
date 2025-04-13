@@ -132,7 +132,7 @@ class FitnessAgent:
             timeframe = input_data.get("timeframe", 30)  # Default to 30 days
 
             # Get user workout data using the processor
-            workout_data = self._get_user_workout_data(user_id, timeframe)
+            workout_data = self._get_user_workout_data(user_id)
 
             # Generate analysis based on the data
             analysis = self._generate_workout_analysis(user_id, timeframe, workout_data)
@@ -226,7 +226,7 @@ class FitnessAgent:
             timeframe = input_data.get("timeframe", 30)  # Default to 30 days
 
             # Get user body metrics using the processor
-            body_metrics = self._get_user_body_metrics(user_id, timeframe)
+            body_metrics = self._get_user_body_metrics(user_id)
 
             # Generate analysis based on the data
             analysis = self._analyze_body_metrics(user_id, timeframe, body_metrics)
@@ -371,14 +371,14 @@ class FitnessAgent:
             return {}
 
     def _get_user_workout_data(
-        self, user_id: str, timeframe: int
+        self,
+        user_id: str,
     ) -> List[Dict[str, Any]]:
         """
         Get user workout data using the processor
 
         Args:
             user_id: The user ID
-            timeframe: Timeframe in days
 
         Returns:
             List of workout data entries
@@ -529,14 +529,14 @@ class FitnessAgent:
             return []
 
     def _get_user_body_metrics(
-        self, user_id: str, timeframe: int
+        self,
+        user_id: str,
     ) -> List[Dict[str, Any]]:
         """
         Get user body metrics using the processor
 
         Args:
             user_id: The user ID
-            timeframe: Timeframe in days
 
         Returns:
             List of body metrics entries
@@ -1598,7 +1598,7 @@ class FitnessAgent:
                 timeframe = request_data.get("timeframe", 30)
 
                 # Get user workout data from database
-                workout_data = self._get_user_workout_data(user_id, timeframe)
+                workout_data = self._get_user_workout_data(user_id)
 
                 return self._generate_workout_analysis(user_id, timeframe, workout_data)
 

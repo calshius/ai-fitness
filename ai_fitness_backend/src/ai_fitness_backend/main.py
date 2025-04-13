@@ -3,7 +3,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from dotenv import load_dotenv
 
-from .database import create_tables
+from .database import create_tables, SessionLocal, create_default_user
 from .routers import router
 
 # Set up logging
@@ -41,12 +41,20 @@ app.include_router(router, prefix="/api")
 logger.info("Routers included")
 
 
-# Create database tables on startup
+# Create database tables and default user on startup
 @app.on_event("startup")
 async def startup_event():
     logger.info("Application startup: Creating database tables")
     create_tables()
     logger.info("Database tables created successfully")
+
+    # Create default user
+    db = SessionLocal()
+    try:
+        default_user = create_default_user(db)
+        logger.info(f"Default user ID: {default_user.id}")
+    finally:
+        db.close()
 
 
 @app.get("/")
