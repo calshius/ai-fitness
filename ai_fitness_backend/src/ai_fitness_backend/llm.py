@@ -3,7 +3,10 @@ import re
 import requests
 import time
 import logging
+from typing import Any, Dict, List, Mapping, Optional
 from dotenv import load_dotenv
+from langchain.llms.base import LLM
+from langchain.callbacks.manager import CallbackManagerForLLMRun
 
 # Set up logging
 logging.basicConfig(
@@ -15,96 +18,158 @@ logger = logging.getLogger(__name__)
 load_dotenv()
 
 
+class HuggingFaceLLM(LLM):
+    """Custom LLM implementation for Hugging Face models"""
+
+    model_name: str = "mistralai/Mistral-7B-Instruct-v0.2"
+    temperature: float = 0.7
+    max_length: int = 1024
+
+    @property
+    def _llm_type(self) -> str:
+        return "huggingface"
+
+    def _call(
+        self,
+        prompt: str,
+        stop: Optional[List[str]] = None,
+        run_manager: Optional[CallbackManagerForLLMRun] = None,
+        **kwargs: Any,
+    ) -> str:
+        """Call the Hugging Face API"""
+        logger.info(f"Starting LLM request using model: {self.model_name}")
+        start_time = time.time()
+
+        api_token = os.getenv("HUGGINGFACE_API_TOKEN")
+        if not api_token:
+            logger.error("No HUGGINGFACE_API_TOKEN found in environment variables")
+            raise Exception("Error: No API token found")
+
+        headers = {"Authorization": f"Bearer {api_token}"}
+
+        # Add system role if provided
+        system_role = kwargs.get("system_role", "You are a helpful assistant.")
+        full_prompt = f"{system_role}\n\n{prompt}"
+        logger.info(f"Prompt length: {len(full_prompt)} characters")
+
+        model_url = f"https://api-inference.huggingface.co/models/{self.model_name}"
+
+        try:
+            logger.info(f"Sending request to {model_url}")
+            response = requests.post(
+                model_url,
+                headers=headers,
+                json={
+                    "inputs": full_prompt,
+                    "parameters": {
+                        "max_length": self.max_length,
+                        "temperature": self.temperature,
+                    },
+                },
+                timeout=180,  # Add timeout to prevent hanging indefinitely
+            )
+
+            request_time = time.time() - start_time
+            logger.info(
+                f"Request completed in {request_time:.2f} seconds with status code: {response.status_code}"
+            )
+
+            if response.status_code == 200:
+                try:
+                    response_json = response.json()
+                    logger.info("Successfully parsed JSON response")
+
+                    if isinstance(response_json, list) and len(response_json) > 0:
+                        if "generated_text" in response_json[0]:
+                            generated_text = response_json[0]["generated_text"]
+                            logger.info(
+                                f"Generated text length: {len(generated_text)} characters"
+                            )
+
+                            # Extract only the structured response part
+                            clean_response = extract_structured_response(generated_text)
+                            if clean_response:
+                                logger.info(
+                                    f"Extracted structured response of length: {len(clean_response)} characters"
+                                )
+                                return clean_response
+                            else:
+                                # If we couldn't extract the structured format, return the full response
+                                logger.warning(
+                                    "Could not extract structured response, returning full response"
+                                )
+                                return generated_text
+                        else:
+                            logger.error(
+                                f"Missing 'generated_text' in response: {response_json}"
+                            )
+                            raise Exception(
+                                f"Error: Unexpected response format - {response_json}"
+                            )
+                    else:
+                        logger.error(f"Unexpected response structure: {response_json}")
+                        raise Exception(
+                            f"Error: Unexpected response structure - {response_json}"
+                        )
+                except Exception as e:
+                    logger.error(f"Error parsing JSON response: {e}")
+                    logger.error(f"Raw response: {response.text}")
+                    raise Exception(f"Error parsing response: {e}")
+            else:
+                logger.error(
+                    f"Error response: {response.status_code} - {response.text}"
+                )
+                raise Exception(f"Error: {response.status_code} - {response.text}")
+
+        except requests.exceptions.Timeout:
+            logger.error("Request timed out after 180 seconds")
+            raise Exception("Error: Request to LLM timed out after 180 seconds")
+        except Exception as e:
+            logger.error(f"Exception during LLM request: {str(e)}")
+            raise
+
+    @property
+    def _identifying_params(self) -> Mapping[str, Any]:
+        """Get the identifying parameters."""
+        return {
+            "model_name": self.model_name,
+            "temperature": self.temperature,
+            "max_length": self.max_length,
+        }
+
+
+def get_llm_client(
+    model_name: str = "mistralai/Mistral-7B-Instruct-v0.2",
+    temperature: float = 0.7,
+    max_length: int = 1024,
+) -> HuggingFaceLLM:
+    """
+    Get a LangChain-compatible LLM client using Hugging Face
+
+    Args:
+        model_name: The Hugging Face model to use
+        temperature: Temperature for generation (higher = more creative)
+        max_length: Maximum length of generated text
+
+    Returns:
+        A LangChain-compatible LLM client
+    """
+    return HuggingFaceLLM(
+        model_name=model_name, temperature=temperature, max_length=max_length
+    )
+
+
 def get_llm_response(
     prompt,
-    system_role="You are a helpful fitness and nutrition assistant.",
+    system_role="You are a helpful assistant.",
     model="mistralai/Mistral-7B-Instruct-v0.2",
 ):
     """Get a response from a free LLM model via Hugging Face"""
-    logger.info(f"Starting LLM request using model: {model}")
-    start_time = time.time()
+    # Create an instance of our custom LLM
+    llm = HuggingFaceLLM(model_name=model)
 
-    api_token = os.getenv("HUGGINGFACE_API_TOKEN")
-    if not api_token:
-        logger.error("No HUGGINGFACE_API_TOKEN found in environment variables")
-        raise Exception("Error: No API token found")
-
-    headers = {"Authorization": f"Bearer {api_token}"}
-
-    # Add system role to the prompt
-    full_prompt = f"{system_role}\n\n{prompt}"
-    logger.info(f"Prompt length: {len(full_prompt)} characters")
-
-    model_url = f"https://api-inference.huggingface.co/models/{model}"
-
-    try:
-        logger.info(f"Sending request to {model_url}")
-        response = requests.post(
-            model_url,
-            headers=headers,
-            json={"inputs": full_prompt, "parameters": {"max_length": 1024}},
-            timeout=180,  # Add timeout to prevent hanging indefinitely
-        )
-
-        request_time = time.time() - start_time
-        logger.info(
-            f"Request completed in {request_time:.2f} seconds with status code: {response.status_code}"
-        )
-
-        if response.status_code == 200:
-            try:
-                response_json = response.json()
-                logger.info("Successfully parsed JSON response")
-                logger.info(f"Response structure: {type(response_json)}")
-                logger.info(f"Response content: {response_json}")
-
-                if isinstance(response_json, list) and len(response_json) > 0:
-                    if "generated_text" in response_json[0]:
-                        generated_text = response_json[0]["generated_text"]
-                        logger.info(
-                            f"Generated text length: {len(generated_text)} characters"
-                        )
-
-                        # Extract only the structured response part
-                        # First, try to find where the OBSERVATIONS section starts
-                        clean_response = extract_structured_response(generated_text)
-                        if clean_response:
-                            logger.info(
-                                f"Extracted structured response of length: {len(clean_response)} characters"
-                            )
-                            return clean_response
-                        else:
-                            # If we couldn't extract the structured format, return the full response
-                            logger.warning(
-                                "Could not extract structured response, returning full response"
-                            )
-                            return generated_text
-                    else:
-                        logger.error(
-                            f"Missing 'generated_text' in response: {response_json}"
-                        )
-                        raise Exception(
-                            f"Error: Unexpected response format - {response_json}"
-                        )
-                else:
-                    logger.error(f"Unexpected response structure: {response_json}")
-                    raise Exception(
-                        f"Error: Unexpected response structure - {response_json}"
-                    )
-            except Exception as e:
-                logger.error(f"Error parsing JSON response: {e}")
-                logger.error(f"Raw response: {response.text}")
-                raise Exception(f"Error parsing response: {e}")
-        else:
-            logger.error(f"Error response: {response.status_code} - {response.text}")
-            raise Exception(f"Error: {response.status_code} - {response.text}")
-
-    except requests.exceptions.Timeout:
-        logger.error("Request timed out after 180 seconds")
-        raise Exception("Error: Request to LLM timed out after 180 seconds")
-    except Exception as e:
-        logger.error(f"Exception during LLM request: {str(e)}")
-        raise
+    # Call the LLM with the system role as a keyword argument
+    return llm._call(prompt, system_role=system_role)
 
 
 def extract_structured_response(text):
@@ -201,74 +266,3 @@ def extract_structured_response(text):
         "Could not extract clean structured response, returning full response"
     )
     return text
-
-
-def analyze_fitness_data(
-    processor,
-    query,
-    system_role="You are a helpful fitness and nutrition assistant.",
-    top_k=7,
-    model="mistralai/Mistral-7B-Instruct-v0.2",
-    include_recipes=False,
-):
-    """Analyze fitness data using RAG approach"""
-    logger.info(
-        f"Starting fitness data analysis for query: {query} using model: {model}"
-    )
-
-    # Generate context from relevant documents
-    logger.info(f"Generating context with top_k={top_k}")
-    start_time = time.time()
-    context = processor.generate_context_from_query(query, top_k=top_k)
-    logger.info(
-        f"Context generation completed in {time.time() - start_time:.2f} seconds"
-    )
-    logger.info(f"Context length: {len(context)} characters")
-
-    # Create the full prompt with structured output instructions
-    recipe_instructions = ""
-    if include_recipes:
-        recipe_instructions = """
-        FOOD SUGGESTIONS:
-        - List 5-7 specific food items for breakfast
-        - List 5-7 specific food items for lunch
-        - List 5-7 specific food items for dinner
-        Format as comma-separated lists (e.g., "eggs, oatmeal, greek yogurt, banana, berries")
-        """
-
-    prompt = f"""
-    {context}
-    
-    Based on the above fitness and nutrition data, please answer the following question:
-    {query}
-    
-    Please structure your response in the following format:
-    
-    OBSERVATIONS:
-    - List key observations from the data
-    - Include patterns, trends, and notable points
-    - Highlight correlations between diet, exercise, and measurements
-    
-    DIETARY SUGGESTIONS:
-    - Provide specific dietary recommendations
-    - Include macronutrient targets if relevant
-    - Suggest meal timing and composition
-    - List foods to include or avoid
-    {recipe_instructions}
-    
-    SUMMARY:
-    A brief conclusion summarizing the key points and most important recommendations.
-    
-    Make sure each section is clearly labeled and separated.
-    """
-
-    logger.info(f"Full prompt created with length: {len(prompt)} characters")
-
-    # Get response from LLM
-    logger.info("Calling LLM for response")
-    start_time = time.time()
-    response = get_llm_response(prompt, system_role, model)
-    logger.info(f"LLM response received in {time.time() - start_time:.2f} seconds")
-    logger.info(f"Response length: {len(response)} characters")
-
-    return response
