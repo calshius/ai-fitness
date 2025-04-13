@@ -209,7 +209,7 @@ def analyze_fitness_data(
     system_role="You are a helpful fitness and nutrition assistant.",
     top_k=7,
     model="mistralai/Mistral-7B-Instruct-v0.2",
-    include_recipes=False
+    include_recipes=False,
 ):
     """Analyze fitness data using RAG approach"""
     logger.info(
@@ -235,7 +235,7 @@ def analyze_fitness_data(
         - List 5-7 specific food items for dinner
         Format as comma-separated lists (e.g., "eggs, oatmeal, greek yogurt, banana, berries")
         """
-    
+
     prompt = f"""
     {context}
     

@@ -23,6 +23,7 @@ router = APIRouter(
 # Create a recipe agent instance
 recipe_agent = RecipeAgent()
 
+
 @router.post("/", response_model=EnhancedQueryResponse)
 async def query_fitness_data(request: QueryRequest, db: Session = Depends(get_db)):
     """
@@ -62,7 +63,7 @@ async def query_fitness_data(request: QueryRequest, db: Session = Depends(get_db
             system_role=request.system_role,
             top_k=request.top_k,
             model=request.model,
-            include_recipes=request.include_recipes
+            include_recipes=request.include_recipes,
         )
         logger.info(
             f"LLM response received in {time.time() - llm_start_time:.2f} seconds"
@@ -75,30 +76,34 @@ async def query_fitness_data(request: QueryRequest, db: Session = Depends(get_db
         # If recipes are requested, generate them
         if request.include_recipes:
             logger.info("Generating recipes based on LLM response")
-            
+
             # Extract food suggestions from the LLM response
             food_suggestions = extract_food_suggestions(response)
-            
+
             if any(food_suggestions.values()):
                 # Generate recipes for each meal type
                 recipes = {}
-                
+
                 # Sample macros - in a real app, these would come from user data
                 macros = {
-                    "breakfast": {"protein": 30, "carbs": 40, "fat": 15, "calories": 400},
+                    "breakfast": {
+                        "protein": 30,
+                        "carbs": 40,
+                        "fat": 15,
+                        "calories": 400,
+                    },
                     "lunch": {"protein": 40, "carbs": 50, "fat": 20, "calories": 600},
-                    "dinner": {"protein": 45, "carbs": 45, "fat": 25, "calories": 650}
+                    "dinner": {"protein": 45, "carbs": 45, "fat": 25, "calories": 650},
                 }
-                
+
                 # Generate recipes for each meal type
                 for meal_type, food_items in food_suggestions.items():
                     if food_items:
                         recipe = await recipe_agent.generate_meal_plan(
-                            macros=macros.get(meal_type, {}),
-                            meal_type=meal_type
+                            macros=macros.get(meal_type, {}), meal_type=meal_type
                         )
                         recipes[meal_type] = recipe
-                
+
                 # Add recipes to the response
                 result.recipes = recipes
                 logger.info(f"Generated {len(recipes)} recipes")

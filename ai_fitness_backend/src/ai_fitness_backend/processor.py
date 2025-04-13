@@ -423,7 +423,7 @@ class FitnessDataProcessor:
             )
             for i, result in enumerate(results):
                 logger.info(
-                    f"Document {i+1}: similarity={result['similarity']:.4f}, type={result['document']['type']}, date={result['document']['date']}"
+                    f"Document {i + 1}: similarity={result['similarity']:.4f}, type={result['document']['type']}, date={result['document']['date']}"
                 )
 
             return results
@@ -440,7 +440,7 @@ class FitnessDataProcessor:
 
         context = f"Based on the following fitness and nutrition data:\n\n"
         for i, doc in enumerate(relevant_docs):
-            context += f"{i+1}. {doc['document']['text']}\n"
+            context += f"{i + 1}. {doc['document']['text']}\n"
 
         logger.info(
             f"Generated context with {len(relevant_docs)} documents in {time.time() - start_time:.2f} seconds"

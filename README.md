@@ -155,7 +155,7 @@ cd ai_fitness_backend
 
 2. Start the PostgreSQL database using Docker Compose:
 ```bash
-docker-compose up -d
+docker compose up -d
 ```
 
 This will start a PostgreSQL instance with the following configuration:

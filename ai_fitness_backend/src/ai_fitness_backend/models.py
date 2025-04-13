@@ -11,8 +11,9 @@ class QueryRequest(BaseModel):
     system_role: str = "You are a helpful fitness and nutrition assistant."
     top_k: int = 7
     model: str = "mistralai/Mistral-7B-Instruct-v0.2"
-    include_recipes: bool = Field(default=False, description="Whether to include food suggestions for recipes")
-
+    include_recipes: bool = Field(
+        default=False, description="Whether to include food suggestions for recipes"
+    )
 
     @validator("query")
     def query_must_not_be_empty(cls, v):
@@ -38,11 +39,16 @@ class QueryResponse(BaseModel):
         super().__init__(**data)
         logger.debug(f"Created QueryResponse with length: {len(self.response)} chars")
 
+
 class EnhancedQueryResponse(QueryResponse):
     recipes: Optional[Dict[str, Any]] = None
+
     def __init__(self, **data):
         super().__init__(**data)
-        logger.debug(f"Created EnhancedQueryResponse with length: {len(self.response)} chars")
+        logger.debug(
+            f"Created EnhancedQueryResponse with length: {len(self.response)} chars"
+        )
+
 
 class UploadResponse(BaseModel):
     message: str
@@ -53,3 +59,16 @@ class UploadResponse(BaseModel):
         logger.debug(
             f"Created UploadResponse with {len(data.get('files_processed', []))} files"
         )
+
+
+class ScraperRequest(BaseModel):
+    """Request model for scraper endpoints"""
+
+    product_name: str
+
+
+class ScraperResponse(BaseModel):
+    """Response model for scraper endpoints"""
+
+    message: str
+    results: List[Dict[str, Any]]
