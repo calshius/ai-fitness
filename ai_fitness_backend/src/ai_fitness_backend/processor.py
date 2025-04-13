@@ -263,7 +263,7 @@ class FitnessDataProcessor:
             documents.append({"text": summary_doc, "type": "summary", "date": "all"})
 
         # Weight trend
-        if self.measurement_data is not None and not self.measurement_data.empty:
+        if self.measurement_data is not None and len(self.measurement_data) >= 2:
             logger.info("Creating weight trend summary document")
             initial_weight = self.measurement_data.iloc[0]["Weight"]
             final_weight = self.measurement_data.iloc[-1]["Weight"]
@@ -274,15 +274,23 @@ class FitnessDataProcessor:
                 f"Total change: {weight_change:.1f} kg over the period."
             )
             documents.append({"text": weight_doc, "type": "summary", "date": "all"})
+        else:
+            logger.warning(
+                "Not enough measurement data to create weight trend document"
+            )
 
         # Add a user fitness profile document
+        current_weight = 80  # Default weight if no measurement data
+        if self.measurement_data is not None and not self.measurement_data.empty:
+            current_weight = self.measurement_data.iloc[-1]["Weight"]
+
         fitness_profile_doc = (
             f"User: Callum. user_id: Callum. Fitness profile: "
             f"goal: gain_muscle, "
             f"experience_level: intermediate, "
             f'available_equipment: ["dumbbells", "barbell", "bench", "pull-up bar"], '
             f"height: 183, "  # in cm
-            f"weight: {final_weight if self.measurement_data is not None and not self.measurement_data.empty else 80}, "  # in kg
+            f"weight: {current_weight}, "  # in kg
             f"age: 32, "
             f"gender: male, "
             f"activity_level: active"
@@ -466,9 +474,17 @@ class FitnessDataProcessor:
         logger.info(f"Retrieving top {top_k} documents for query: {query}")
         start_time = time.time()
 
+        if not self.documents or len(self.documents) == 0:
+            logger.warning("No documents found to retrieve from")
+            return []
+
         if self.document_embeddings is None:
             logger.info("No embeddings found, creating embeddings")
             self.create_embeddings()
+
+        if self.document_embeddings is None or len(self.document_embeddings) == 0:
+            logger.warning("Failed to create embeddings")
+            return []
 
         # Encode the query
         logger.info("Encoding query")
@@ -481,8 +497,9 @@ class FitnessDataProcessor:
                 [query_embedding], self.document_embeddings
             )[0]
 
-            # Get top k indices
-            top_indices = np.argsort(similarities)[-top_k:][::-1]
+            # Get top k indices, but ensure we don't exceed the number of documents
+            actual_top_k = min(top_k, len(self.documents))
+            top_indices = np.argsort(similarities)[-actual_top_k:][::-1]
 
             # Return top k documents and their similarity scores
             results = []
@@ -502,7 +519,8 @@ class FitnessDataProcessor:
             return results
         except Exception as e:
             logger.error(f"Error retrieving relevant documents: {str(e)}")
-            raise
+            logger.exception(e)
+            return []
 
     def generate_context_from_query(self, query, top_k=5):
         """Generate a context string from relevant documents for a query"""
